@@ -3,7 +3,7 @@
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { careers, company } from "@/data/site";
+import { careers, slugify } from "@/data/site";
 
 function Helmet({ className = "h-7 w-7" }: { className?: string }) {
   return (
@@ -30,8 +30,8 @@ export default function Careers() {
             intro={careers.intro}
           />
           <Reveal>
-            <MagneticButton href={`mailto:${company.careersEmail}`} variant="ghost">
-              {company.careersEmail}
+            <MagneticButton href="/careers" variant="ghost">
+              View all roles
             </MagneticButton>
           </Reveal>
         </div>
@@ -40,11 +40,9 @@ export default function Careers() {
           {careers.openings.map((o, i) => (
             <Reveal key={o.title} delay={(i % 2) * 0.08}>
               <a
-                href={`mailto:${company.careersEmail}?subject=${encodeURIComponent(
-                  "Application — " + o.title
-                )}`}
+                href={`/careers/${slugify(o.title)}`}
                 data-cursor
-                className="group relative block overflow-hidden rounded-2xl border border-white/8 bg-ink/60 p-7 transition-all duration-500 hover:border-gold/40"
+                className="group relative block overflow-hidden rounded-2xl border [border-color:var(--ui-border)] bg-ink/60 p-7 transition-all duration-500 hover:border-gold/40"
               >
                 {/* blueprint grid reveal */}
                 <div

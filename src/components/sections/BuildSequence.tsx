@@ -101,7 +101,7 @@ export default function BuildSequence() {
                   key={s.no}
                   className="bs-stage absolute inset-0 opacity-0"
                 >
-                  <div className="font-serif text-7xl text-white/10">{s.no}</div>
+                  <div className="font-serif text-7xl [color:var(--ui-ghost)]">{s.no}</div>
                   <h3 className="-mt-8 font-serif text-3xl text-silver">
                     {s.title}
                   </h3>
@@ -142,7 +142,7 @@ export default function BuildSequence() {
                 </defs>
 
                 {/* ground */}
-                <line x1="20" y1="300" x2="580" y2="300" stroke="#2a323f" strokeWidth="2" />
+                <line x1="20" y1="300" x2="580" y2="300" stroke="#c6bfb0" strokeWidth="2" />
 
                 {/* pylons */}
                 {[140, 300, 460].map((x) => (
@@ -167,7 +167,7 @@ export default function BuildSequence() {
                   width="400"
                   height="16"
                   rx="3"
-                  fill="#c7ced6"
+                  fill="#9b98a8"
                   opacity="0.9"
                   style={{ transformBox: "fill-box", transformOrigin: "left" }}
                 />
@@ -202,7 +202,7 @@ export default function BuildSequence() {
               </svg>
 
               {/* vertical progress beam */}
-              <div className="absolute -left-5 top-0 hidden h-full w-px bg-white/10 lg:block">
+              <div className="absolute -left-5 top-0 hidden h-full w-px [background-color:var(--ui-ghost)] lg:block">
                 <div
                   className="bs-beamfill h-full w-full origin-top bg-gradient-to-b from-gold-soft to-gold-deep"
                   style={{ transform: "scaleY(0)" }}

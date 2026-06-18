@@ -41,7 +41,7 @@ export default function About() {
           </ul>
 
           {/* stats */}
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/5 sm:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border [border-color:var(--ui-border)] [background-color:var(--ui-surface-sm)] sm:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label} className="bg-ink/80 px-5 py-6">
                 <div className="font-serif text-3xl text-gold-gradient">
@@ -59,7 +59,7 @@ export default function About() {
         <Reveal delay={0.1}>
           <div className="relative">
             <TiltCard max={5} className="overflow-hidden rounded-3xl">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border [border-color:var(--ui-border-md)]">
                 <Image
                   src={media.aboutImage}
                   alt="Sheeraj engineering at work"
@@ -82,7 +82,7 @@ export default function About() {
                   <div className="text-xs text-mist">{chairman.role}</div>
                 </div>
                 <MagneticButton
-                  href="/#contact"
+                  href="/chairman"
                   variant="ghost"
                   className="!px-4 !py-2 text-[0.7rem]"
                   strength={0.3}

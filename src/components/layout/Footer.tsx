@@ -5,11 +5,11 @@ import { company, nav } from "@/data/site";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-ink pt-20">
+    <footer className="relative overflow-hidden border-t [border-color:var(--ui-border)] bg-ink pt-20">
       {/* watermark */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-serif text-[22vw] font-medium leading-none text-white/[0.018]"
+        className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-serif text-[22vw] font-medium leading-none [color:var(--ui-ghost-dim)]"
       >
         SHEERAJ
       </div>

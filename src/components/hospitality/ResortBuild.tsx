@@ -13,7 +13,7 @@ export default function ResortBuild() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const ctx = gsap.context((self) => {
       const q = self.selector!;
-      const targets = [".rb-pile", ".rb-deck", ".rb-villa", ".rb-roof", ".rb-pool-water", ".rb-palm", ".rb-light", ".rb-glow"];
+      const targets = [".rb-pile", ".rb-deck", ".rb-villa", ".rb-roof", ".rb-pool-water", ".rb-palm", ".rb-lamp", ".rb-light", ".rb-glow", ".rb-hook"];
 
       if (reduce) {
         gsap.set(targets, { scaleX: 1, scaleY: 1, opacity: 1 });
@@ -35,11 +35,13 @@ export default function ResortBuild() {
       tl.fromTo(".rb-deck", { scaleX: 0 }, { scaleX: 1, duration: 1 }, 1.1);
       tl.fromTo(".rb-villa", { scaleY: 0 }, { scaleY: 1, stagger: 0.12, duration: 1 }, 1.3);
       tl.fromTo(".rb-roof", { scaleY: 0, opacity: 0 }, { scaleY: 1, opacity: 1, stagger: 0.12, duration: 0.6 }, 1.7);
-      tl.fromTo(".rb-hook", { y: -60 }, { y: 0, duration: 1, ease: "power1.inOut", yoyo: true, repeat: 1 }, 1.1);
+      // crane lowers a load into place (hidden until it appears, then stays)
+      tl.fromTo(".rb-hook", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power1.inOut" }, 1.3);
 
-      // 03 — pool fills, palms grow
+      // 03 — pool fills, palms grow, lamp posts rise
       tl.fromTo(".rb-pool-water", { scaleY: 0 }, { scaleY: 1, duration: 1 }, 2.2);
       tl.fromTo(".rb-palm", { scaleY: 0 }, { scaleY: 1, stagger: 0.12, duration: 0.8 }, 2.3);
+      tl.fromTo(".rb-lamp", { scaleY: 0 }, { scaleY: 1, stagger: 0.1, duration: 0.8 }, 2.5);
 
       // 04 — lights + warm glow
       tl.fromTo(".rb-glow", { opacity: 0 }, { opacity: 1, duration: 1 }, 3);
@@ -131,12 +133,23 @@ export default function ResortBuild() {
                   </g>
                 ))}
 
-                {/* windows / lights */}
+                {/* villa window lights (turn on at the end) */}
                 {[244, 268, 334, 358, 424, 448].map((x) => (
                   <circle key={x} className="rb-light" cx={x} cy="126" r="3.5" fill="#ffd98a" opacity="0" />
                 ))}
-                {[230, 290, 350, 410, 470].map((x) => (
-                  <circle key={`d-${x}`} className="rb-light" cx={x} cy="151" r="2" fill="#ffe3a6" opacity="0" />
+
+                {/* boardwalk lamp posts — rise with the deck; the light hangs on the
+                    lamp head and only switches on at the end (hidden initially) */}
+                {[214, 300, 386, 470].map((x) => (
+                  <g key={`lamp-${x}`}>
+                    <g className="rb-lamp" style={{ transformBox: "fill-box", transformOrigin: "bottom" }}>
+                      <line x1={x} y1="146" x2={x} y2="118" stroke="#5c6a62" strokeWidth="2.6" strokeLinecap="round" />
+                      <path d={`M${x} 119 q0 -4 6 -4`} stroke="#5c6a62" strokeWidth="2.6" fill="none" strokeLinecap="round" />
+                      <circle cx={x + 6} cy="116" r="3" fill="#3b423d" />
+                    </g>
+                    <circle className="rb-light" cx={x + 6} cy="116" r="2.6" fill="#ffe6ad" opacity="0" />
+                    <circle className="rb-light" cx={x + 6} cy="116" r="6.5" fill="#ffd98a" opacity="0" />
+                  </g>
                 ))}
 
                 {/* palms on the beach */}
@@ -151,9 +164,9 @@ export default function ResortBuild() {
                 <g stroke="#6b7a82" strokeWidth="3" fill="none" strokeLinecap="round">
                   <path d="M540 236V70" />
                   <path d="M540 70h-44M540 70l30 8M540 82l-36-3" />
-                  <path className="rb-hook" d="M504 70v22" />
+                  <path className="rb-hook" d="M504 70v22" opacity="0" />
                 </g>
-                <rect className="rb-hook" x="498" y="92" width="14" height="8" rx="1" fill="url(#rb-struct)" />
+                <rect className="rb-hook" x="498" y="92" width="14" height="8" rx="1" fill="url(#rb-struct)" opacity="0" />
               </svg>
             </div>
           </div>

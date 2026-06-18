@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Logo from "@/components/ui/Logo";
 import MagneticButton from "@/components/ui/MagneticButton";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { nav, type NavItem } from "@/data/site";
 import { scrollToTarget } from "@/components/providers/SmoothScroll";
 
@@ -38,16 +39,26 @@ export default function Navbar() {
     const base = mobile
       ? "block py-3 text-2xl font-serif text-silver hover:text-gold transition-colors"
       : "relative text-sm text-silver/85 transition-colors hover:text-gold";
+    const label = (
+      <span className="inline-flex items-center gap-1.5">
+        {item.label}
+        {item.tag && (
+          <span className="rounded-full bg-gold/15 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-gold">
+            {item.tag}
+          </span>
+        )}
+      </span>
+    );
     if (item.to?.startsWith("/#")) {
       return (
         <a key={item.label} href={item.to} className={base} onClick={(e) => handleHash(e, item.to!)}>
-          {item.label}
+          {label}
         </a>
       );
     }
     return (
       <Link key={item.label} href={item.to ?? "#"} className={base} onClick={() => setOpen(false)}>
-        {item.label}
+        {label}
       </Link>
     );
   };
@@ -95,7 +106,7 @@ export default function Navbar() {
                               key={c.label}
                               href={c.to}
                               onClick={(e) => handleHash(e, c.to!)}
-                              className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:bg-white/5"
+                              className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:[background-color:var(--ui-surface-xs)]"
                             >
                               <span className="text-sm text-silver group-hover:text-gold">{c.label}</span>
                               <span className="text-[0.65rem] text-mist">{c.note}</span>
@@ -104,7 +115,7 @@ export default function Navbar() {
                             <Link
                               key={c.label}
                               href={c.to ?? "#"}
-                              className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:bg-white/5"
+                              className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:[background-color:var(--ui-surface-xs)]"
                             >
                               <span className="text-sm text-silver group-hover:text-gold">{c.label}</span>
                               <span className="text-[0.65rem] text-mist">{c.note}</span>
@@ -121,9 +132,10 @@ export default function Navbar() {
             )}
           </div>
 
-          <div className="hidden lg:block">
-            <MagneticButton href="/#rental" className="!px-6 !py-3 text-xs">
-              Rent Machinery
+          <div className="hidden items-center gap-3 lg:flex">
+            <ThemeToggle />
+            <MagneticButton href="/contact" className="!px-6 !py-3 text-xs">
+              Contact
             </MagneticButton>
           </div>
 
@@ -162,10 +174,11 @@ export default function Navbar() {
                   : [renderLink(item, true)]
               )}
             </div>
-            <div className="mt-10">
-              <MagneticButton href="/#rental" onClick={() => setOpen(false)}>
-                Rent Machinery
+            <div className="mt-10 flex items-center gap-4">
+              <MagneticButton href="/contact" onClick={() => setOpen(false)}>
+                Contact
               </MagneticButton>
+              <ThemeToggle />
             </div>
           </motion.div>
         )}

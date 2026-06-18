@@ -8,16 +8,16 @@
 
 @theme {
   /* ---- Surfaces ---- */
-  --color-base: #06070b;
-  --color-ink: #0b0d14;
-  --color-panel: #11141d;
-  --color-gunmetal: #171b26;
-  --color-steel: #2a323f;
+  --color-base: #f7f5ef;
+  --color-ink: #f0ece3;
+  --color-panel: #e9e4d9;
+  --color-gunmetal: #ddd7ca;
+  --color-steel: #c6bfb0;
 
   /* ---- Neutrals / text ---- */
-  --color-silver: #c7ced6;
-  --color-mist: #99a1ae;
-  --color-faint: #5b6473;
+  --color-silver: #2c2a36;
+  --color-mist: #6a6776;
+  --color-faint: #9b98a8;
 
   /* ---- Gold (primary accent) ---- */
   --color-gold: #d4af37;
@@ -52,10 +52,59 @@
 @layer base {
   :root {
     --gold-rgb: 212, 175, 55;
+
+    /* ---- Theme-sensitive UI utility vars (light defaults) ---- */
+    --ui-border:      color-mix(in oklab, #000 8%, transparent);
+    --ui-border-md:   color-mix(in oklab, #000 10%, transparent);
+    --ui-border-lg:   color-mix(in oklab, #000 20%, transparent);
+    --ui-surface-xs:  color-mix(in oklab, #000 3%, transparent);
+    --ui-surface-sm:  color-mix(in oklab, #000 4%, transparent);
+    --ui-surface:     color-mix(in oklab, #000 5%, transparent);
+    --ui-surface-md:  color-mix(in oklab, #000 6%, transparent);
+    --ui-ghost:       color-mix(in oklab, #000 10%, transparent);
+    --ui-ghost-dim:   color-mix(in oklab, #000 4%, transparent);
+    --ui-dot:         rgba(0, 0, 0, 0.18);
+    --ui-map-bg:      #edeae2;
+  }
+
+  /* ---- Dark theme overrides ---- */
+  html.dark {
+    --color-base:     #06070b;
+    --color-ink:      #0b0d14;
+    --color-panel:    #11141d;
+    --color-gunmetal: #171b26;
+    --color-steel:    #2a323f;
+    --color-silver:   #c7ced6;
+    --color-mist:     #99a1ae;
+    --color-faint:    #5b6473;
+
+    --ui-border:      color-mix(in oklab, #fff 8%, transparent);
+    --ui-border-md:   color-mix(in oklab, #fff 10%, transparent);
+    --ui-border-lg:   color-mix(in oklab, #fff 20%, transparent);
+    --ui-surface-xs:  color-mix(in oklab, #fff 2%, transparent);
+    --ui-surface-sm:  color-mix(in oklab, #fff 3%, transparent);
+    --ui-surface:     color-mix(in oklab, #fff 5%, transparent);
+    --ui-surface-md:  color-mix(in oklab, #fff 5%, transparent);
+    --ui-ghost:       color-mix(in oklab, #fff 10%, transparent);
+    --ui-ghost-dim:   rgba(255, 255, 255, 0.018);
+    --ui-dot:         rgba(255, 255, 255, 0.50);
+    --ui-map-bg:      #080b12;
+  }
+
+  html.dark * {
+    border-color: color-mix(in oklab, #ffffff 8%, transparent);
+  }
+
+  html.dark ::selection {
+    color: #06070b;
+  }
+
+  html.dark h1, html.dark h2, html.dark h3, html.dark h4 {
+    color: #f3f1ea;
   }
 
   * {
-    border-color: color-mix(in oklab, #ffffff 8%, transparent);
+    border-color: color-mix(in oklab, #000000 10%, transparent);
   }
 
   html {
@@ -74,11 +123,11 @@
 
   ::selection {
     background: color-mix(in oklab, var(--color-gold) 80%, black);
-    color: #06070b;
+    color: #f7f5ef;
   }
 
   h1, h2, h3, h4 {
-    color: #f3f1ea;
+    color: #1a1828;
     font-weight: 500;
     letter-spacing: -0.02em;
   }
@@ -134,6 +183,12 @@
 
   /* Glassmorphism panel */
   .glass {
+    background: color-mix(in oklab, var(--color-panel) 72%, transparent);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    border: 1px solid color-mix(in oklab, #000000 10%, transparent);
+  }
+  html.dark .glass {
     background: color-mix(in oklab, var(--color-panel) 55%, transparent);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
@@ -181,13 +236,20 @@
   }
   .btn-ghost {
     color: var(--color-silver);
+    border: 1px solid color-mix(in oklab, #000000 18%, transparent);
+    background: color-mix(in oklab, #000000 4%, transparent);
+  }
+  .btn-ghost:hover {
+    color: #1a1828;
+    border-color: color-mix(in oklab, var(--color-gold) 70%, transparent);
+    transform: translateY(-2px);
+  }
+  html.dark .btn-ghost {
     border: 1px solid color-mix(in oklab, #ffffff 18%, transparent);
     background: color-mix(in oklab, #ffffff 3%, transparent);
   }
-  .btn-ghost:hover {
+  html.dark .btn-ghost:hover {
     color: #fff;
-    border-color: color-mix(in oklab, var(--color-gold) 70%, transparent);
-    transform: translateY(-2px);
   }
   /* Sheen sweep on hover */
   .btn::after {
@@ -218,8 +280,11 @@
     position: relative;
     border-radius: 1.25rem;
     background: var(--color-ink);
-    border: 1px solid color-mix(in oklab, #ffffff 7%, transparent);
+    border: 1px solid color-mix(in oklab, #000000 8%, transparent);
     overflow: hidden;
+  }
+  html.dark .card-border {
+    border: 1px solid color-mix(in oklab, #ffffff 7%, transparent);
   }
   .card-border::before {
     content: "";

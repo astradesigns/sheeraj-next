@@ -26,19 +26,21 @@ export type NavItem = {
   href?: string;
   external?: boolean;
   note?: string;
+  tag?: string;
   children?: NavItem[];
 };
 
 export const nav: NavItem[] = [
-  { label: "About", to: "/#about" },
-  { label: "Services", to: "/#services" },
-  { label: "Projects", to: "/#projects" },
-  { label: "Hospitality", to: "/#hospitality" },
-  { label: "Careers", to: "/#careers" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Projects", to: "/projects" },
+  { label: "Andaman Projects", to: "/hospitality", tag: "New" },
+  { label: "Careers", to: "/careers" },
   {
     label: "Resources",
     children: [
       { label: "Partners", to: "/#partners", note: "Trusted network" },
+      { label: "Rent Machinery", to: "/#rental", note: "Plant & fleet" },
       { label: "ERP", to: "/erp", note: "Coming soon" },
     ],
   },
@@ -393,6 +395,272 @@ export const hospitalityPage = {
     ],
   },
 };
+
+// ============================================================================
+//  LEADERSHIP / TEAM
+// ============================================================================
+export type Person = {
+  name: string;
+  role: string;
+  photo: string;
+  message: string;
+};
+
+export const team = {
+  chairman: {
+    name: "Rajeev Sheeraj",
+    role: "Founder & Chairman",
+    photo: "/images/chairman.jpg",
+    message:
+      "Everything bearing the Sheeraj name is built to outlast us. That quiet promise — made when we laid our first kilometre of highway — still guides every decision we make, from canals and corridors to the shores of the Andamans.",
+  } as Person,
+  directors: [
+    { name: "Director One", role: "Managing Director", photo: "/images/about-engineering.jpg", message: "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline." },
+    { name: "Director Two", role: "Director — Operations", photo: "/images/project-highway.jpg", message: "Our fleet and field teams turn drawings into roads, season after season, without ever cutting a corner." },
+    { name: "Director Three", role: "Director — Hospitality", photo: "/images/resort-overwater.jpg", message: "On the islands we build experiences as carefully as we have always built bridges." },
+    { name: "Director Four", role: "Director — Engineering", photo: "/images/project-bridge.jpg", message: "Precision is a culture here. It lives in the way we plan, pour and finish every structure." },
+  ] as Person[],
+  ca: {
+    name: "S. Menon",
+    role: "Chief Financial Officer · Chartered Accountant",
+    photo: "/images/project-government.jpg",
+    message:
+      "Disciplined finance is the foundation beneath every structure we deliver — transparent, audited, and built for the long term.",
+  } as Person,
+};
+
+export const chairmanMessage = {
+  name: team.chairman.name,
+  role: team.chairman.role,
+  photo: team.chairman.photo,
+  signature: team.chairman.name,
+  paragraphs: [
+    "When we laid our first kilometre of highway, we made a quiet promise: that everything bearing the Sheeraj name would be built to outlast us. Fifteen years on, that promise still guides every decision we make.",
+    "Today, that same discipline carries us into a new chapter. As we shape resorts on the shores of the Andaman & Nicobar Islands, we bring the rigour of infrastructure to the artistry of hospitality — engineering experiences as carefully as we have always engineered roads, canals, and bridges.",
+    "Our people remain our proudest achievement. Their craftsmanship, their integrity, and their refusal to cut corners are the real foundation of this company.",
+    "To our partners and clients: thank you for trusting us to build what matters. The best of Sheeraj is still ahead.",
+  ],
+};
+
+// ============================================================================
+//  SERVICES — detail content for the dedicated page
+// ============================================================================
+export const serviceDetail: Record<string, { points: string[]; image: string }> = {
+  highways: {
+    points: ["NH & SH packages, service roads and high-speed corridors", "Flexible & rigid pavements to IRC standards", "Drainage, safety furniture and intelligent road systems"],
+    image: "/images/project-highway.jpg",
+  },
+  "ring-roads": {
+    points: ["Orbital corridors & city bypasses", "Grade separators and interchanges", "Congestion relief for growing regions"],
+    image: "/images/project-expressway.jpg",
+  },
+  canals: {
+    points: ["Lined main canals & distributary networks", "Cross-drainage and regulating structures", "Assured irrigation across thousands of hectares"],
+    image: "/images/project-canal.jpg",
+  },
+  government: {
+    points: ["Turnkey EPC delivery for public authorities", "Civic and public-works infrastructure", "On-time, to-spec, fully audited"],
+    image: "/images/project-government.jpg",
+  },
+  infrastructure: {
+    points: ["RCC and pre-stressed concrete bridges", "Interchanges, culverts and grade separators", "Large-scale civil works with an in-house fleet"],
+    image: "/images/project-bridge.jpg",
+  },
+  hospitality: {
+    points: ["Beachfront & overwater resort construction", "Tropical, climate-responsive architecture", "Coastal-grade, sustainable building systems"],
+    image: "/images/resort-overwater.jpg",
+  },
+};
+
+// ============================================================================
+//  PROJECT DETAIL
+// ============================================================================
+export const slugify = (s: string) =>
+  s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+export type ProjectDetail = {
+  overview: string;
+  scope: string[];
+  gallery: string[];
+  facts: { label: string; value: string }[];
+  timeline: { phase: string; label: string }[];
+};
+
+export const projectDetails: Record<string, ProjectDetail> = {
+  "andaman-island-resort": {
+    overview:
+      "Our flagship luxury resort on a pristine Andaman island — beachfront villas, overwater suites, a lagoon infinity pool and a wellness sanctuary, engineered to coastal-grade durability and built to disappear into the landscape.",
+    scope: ["40-acre low-density masterplan", "Beachfront & overwater villas", "Lagoon infinity pool & marine centre", "Solar-ready, reef-safe systems"],
+    gallery: ["/images/resort-overwater.jpg", "/images/exp-infinity-pool.jpg", "/images/exp-overwater-deck.jpg", "/images/island-aerial.jpg"],
+    facts: [
+      { label: "Location", value: "Andaman & Nicobar Islands" },
+      { label: "Status", value: "Ongoing · Phase I" },
+      { label: "Keys", value: "120 villas & suites" },
+      { label: "Opening", value: "2026" },
+    ],
+    timeline: [
+      { phase: "2024", label: "Groundbreaking & foundations" },
+      { phase: "2025", label: "Villas & overwater structures" },
+      { phase: "2026", label: "Phase I opening" },
+    ],
+  },
+  "state-highway-corridor": {
+    overview:
+      "A multi-lane state-highway corridor with service roads, drainage and safety furniture, delivered ahead of schedule to exacting IRC standards.",
+    scope: ["Multi-lane carriageway", "Service roads & junctions", "Drainage & safety furniture", "Road-marking & signage"],
+    gallery: ["/images/project-highway.jpg", "/images/project-expressway.jpg", "/images/project-bridge.jpg"],
+    facts: [
+      { label: "Location", value: "India" },
+      { label: "Status", value: "Completed" },
+      { label: "Length", value: "Multi-lane corridor" },
+      { label: "Year", value: "2022" },
+    ],
+    timeline: [
+      { phase: "Survey", label: "Alignment & earthwork" },
+      { phase: "Build", label: "Pavement & structures" },
+      { phase: "Open", label: "Handover" },
+    ],
+  },
+  "major-irrigation-canal": {
+    overview:
+      "A lined main canal and distributary network expanding assured irrigation across thousands of hectares of farmland.",
+    scope: ["Lined main canal", "Distributary network", "Cross-drainage structures", "Regulating gates"],
+    gallery: ["/images/project-canal.jpg", "/images/project-government.jpg"],
+    facts: [
+      { label: "Location", value: "India" },
+      { label: "Status", value: "Completed" },
+      { label: "Command area", value: "Thousands of ha" },
+      { label: "Year", value: "2021" },
+    ],
+    timeline: [
+      { phase: "Excavation", label: "Canal prism" },
+      { phase: "Lining", label: "Concrete lining" },
+      { phase: "Commission", label: "Water release" },
+    ],
+  },
+  "river-bridge-and-approaches": {
+    overview:
+      "A pre-stressed concrete bridge with reinforced approaches connecting communities across the river.",
+    scope: ["Pre-stressed concrete superstructure", "Pile foundations", "Reinforced approaches", "Crash barriers & lighting"],
+    gallery: ["/images/project-bridge.jpg", "/images/project-highway.jpg"],
+    facts: [
+      { label: "Location", value: "India" },
+      { label: "Status", value: "Completed" },
+      { label: "Type", value: "PSC bridge" },
+      { label: "Year", value: "2020" },
+    ],
+    timeline: [
+      { phase: "Foundations", label: "Piling & pier caps" },
+      { phase: "Spans", label: "Girder launch" },
+      { phase: "Open", label: "Deck & handover" },
+    ],
+  },
+  "public-infrastructure-package": {
+    overview:
+      "Turnkey civic works delivered as EPC partner to the public authority — on time and to specification.",
+    scope: ["Turnkey EPC", "Civic infrastructure", "Utilities & roads", "Quality & safety controls"],
+    gallery: ["/images/project-government.jpg", "/images/project-canal.jpg"],
+    facts: [
+      { label: "Location", value: "India" },
+      { label: "Status", value: "Completed" },
+      { label: "Delivery", value: "Turnkey EPC" },
+      { label: "Year", value: "2019" },
+    ],
+    timeline: [
+      { phase: "Design", label: "Detailed engineering" },
+      { phase: "Build", label: "Execution" },
+      { phase: "Handover", label: "Commissioning" },
+    ],
+  },
+  "expressway-package": {
+    overview:
+      "A high-speed corridor package featuring structures, interchanges and intelligent road systems.",
+    scope: ["High-speed corridor", "Interchanges & structures", "Intelligent transport systems", "Tolling readiness"],
+    gallery: ["/images/project-expressway.jpg", "/images/project-highway.jpg", "/images/project-bridge.jpg"],
+    facts: [
+      { label: "Location", value: "India" },
+      { label: "Status", value: "Ongoing" },
+      { label: "Type", value: "Expressway" },
+      { label: "Year", value: "2023–" },
+    ],
+    timeline: [
+      { phase: "Earthwork", label: "Formation" },
+      { phase: "Structures", label: "Interchanges" },
+      { phase: "Surfacing", label: "Pavement & ITS" },
+    ],
+  },
+};
+
+// ============================================================================
+//  CAREERS — jobs with detail for the dedicated page
+// ============================================================================
+export type Job = {
+  slug: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  summary: string;
+  responsibilities: string[];
+  requirements: string[];
+};
+
+export const jobDepartments = ["All", "Engineering", "Hospitality", "Operations", "Safety", "Finance"];
+export const jobLocations = ["All", "Project Site, India", "Andaman & Nicobar Islands", "Head Office", "Multiple Sites"];
+export const jobTypes = ["All", "Full-time", "Contract"];
+
+export const jobs: Job[] = [
+  {
+    slug: "project-engineer-highways",
+    title: "Project Engineer — Highways",
+    department: "Engineering",
+    location: "Project Site, India",
+    type: "Full-time",
+    summary: "Lead execution of highway packages from earthwork to surfacing, owning quality, schedule and safety on site.",
+    responsibilities: ["Plan and supervise daily site execution", "Coordinate survey, quantities and quality control", "Drive schedule adherence and zero-harm safety"],
+    requirements: ["B.E./B.Tech Civil with 4+ years on highways", "Strong knowledge of IRC/MoRTH specifications", "Hands-on site leadership experience"],
+  },
+  {
+    slug: "site-engineer-hospitality",
+    title: "Site Engineer — Hospitality",
+    department: "Hospitality",
+    location: "Andaman & Nicobar Islands",
+    type: "Full-time",
+    summary: "Execute coastal-grade resort construction — villas, decks and pools — to luxury finishes on a remote island site.",
+    responsibilities: ["Supervise structural and finishing works", "Manage marine-grade and reef-safe methods", "Coordinate with architects and consultants"],
+    requirements: ["B.E./B.Tech Civil with 3+ years", "Finishing & MEP coordination experience", "Willingness to be island-based"],
+  },
+  {
+    slug: "quantity-surveyor",
+    title: "Quantity Surveyor",
+    department: "Operations",
+    location: "Head Office",
+    type: "Full-time",
+    summary: "Own measurement, billing and cost control across multiple infrastructure packages.",
+    responsibilities: ["Prepare BOQs, measurements and bills", "Manage subcontractor reconciliation", "Track cost vs. budget and variations"],
+    requirements: ["Diploma/Degree in Civil with QS experience", "Strong Excel and BBS/estimation skills", "Eye for detail and contracts"],
+  },
+  {
+    slug: "safety-officer",
+    title: "Safety Officer",
+    department: "Safety",
+    location: "Multiple Sites",
+    type: "Full-time",
+    summary: "Champion a zero-harm culture across active sites through training, audits and rigorous compliance.",
+    responsibilities: ["Conduct toolbox talks and inductions", "Run safety audits and incident reviews", "Maintain statutory HSE compliance"],
+    requirements: ["Diploma in Industrial Safety (ADIS)", "3+ years on construction sites", "Strong communication and firmness"],
+  },
+  {
+    slug: "finance-executive",
+    title: "Finance Executive",
+    department: "Finance",
+    location: "Head Office",
+    type: "Full-time",
+    summary: "Support accounting, compliance and reporting under the CFO across the group's projects.",
+    responsibilities: ["Maintain ledgers and reconciliations", "Assist GST/TDS and statutory filings", "Support MIS and audit cycles"],
+    requirements: ["B.Com / Inter-CA", "Tally/ERP and GST working knowledge", "2+ years in construction finance preferred"],
+  },
+];
 
 export type IconName =
   | "highway"

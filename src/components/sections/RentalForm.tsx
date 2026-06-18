@@ -45,10 +45,10 @@ function Field({
   textarea?: boolean;
 }) {
   const base =
-    "peer w-full rounded-xl border bg-white/[0.03] px-4 pt-6 pb-2 text-sm text-silver outline-none transition-all placeholder-transparent focus:bg-white/[0.05]";
+    "peer w-full rounded-xl border [background-color:var(--ui-surface-xs)] px-4 pt-6 pb-2 text-sm text-silver outline-none transition-all placeholder-transparent focus:[background-color:var(--ui-surface-sm)]";
   const ring = error
     ? "border-red-500/60 focus:border-red-400"
-    : "border-white/10 focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,175,55,0.18)]";
+    : "[border-color:var(--ui-border-md)] focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,175,55,0.18)]";
   return (
     <div className="relative">
       {textarea ? (
@@ -215,7 +215,7 @@ export default function RentalForm() {
                     <select
                       value={form.machinery}
                       onChange={(e) => update("machinery", e.target.value)}
-                      className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm text-silver outline-none transition-all focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,175,55,0.18)]"
+                      className="w-full rounded-xl border [border-color:var(--ui-border-md)] [background-color:var(--ui-surface-xs)] px-4 py-3.5 text-sm text-silver outline-none transition-all focus:border-gold focus:shadow-[0_0_0_3px_rgba(212,175,55,0.18)]"
                     >
                       {machinery.map((m) => (
                         <option key={m} value={m} className="bg-ink">

@@ -6,7 +6,7 @@ import { partners } from "@/data/site";
 
 function Chip({ name }: { name: string }) {
   return (
-    <span className="group inline-flex items-center gap-3 whitespace-nowrap rounded-full border border-white/8 bg-white/[0.02] px-7 py-4 transition-all duration-300 hover:scale-110 hover:border-gold/40 hover:bg-white/[0.05]">
+    <span className="group inline-flex items-center gap-3 whitespace-nowrap rounded-full border [border-color:var(--ui-border)] [background-color:var(--ui-surface-xs)] px-7 py-4 transition-all duration-300 hover:scale-110 hover:border-gold/40 hover:[background-color:var(--ui-surface-md)]">
       <span className="h-2 w-2 rounded-full bg-gold/60 transition-colors group-hover:bg-gold" />
       <span className="font-display text-lg tracking-wide text-silver/70 transition-colors group-hover:text-silver">
         {name}

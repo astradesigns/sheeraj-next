@@ -52,9 +52,8 @@ export default function Hero() {
         <HeroCanvas />
       </div>
 
-      {/* readability + cinematic vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_-10%,transparent_30%,rgba(6,7,11,0.7)_80%,#06070b_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-base via-base/40 to-transparent" />
+      {/* soft vignette fade to page background */}
+      <div className="absolute inset-0 bg-gradient-to-t from-base via-base/50 to-transparent" />
 
       {/* gold glow accents */}
       <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-gold/10 blur-[120px]" />
@@ -118,7 +117,7 @@ export default function Hero() {
         <span className="font-display text-[0.6rem] uppercase tracking-[0.4em] text-mist">
           Scroll
         </span>
-        <span className="flex h-10 w-6 justify-center rounded-full border border-white/20 pt-2">
+        <span className="flex h-10 w-6 justify-center rounded-full border [border-color:var(--ui-border-lg)] pt-2">
           <span className="h-2 w-px bg-gold [animation:scroll-dot_1.8s_ease-in-out_infinite]" />
         </span>
       </motion.div>

@@ -6,7 +6,18 @@ import HospHeading from "./HospHeading";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import { LeafCluster } from "./tropical";
+import ContactForm, { type FieldDef } from "@/components/ui/ContactForm";
 import { company, hospitalityPage } from "@/data/site";
+
+const INVESTOR_FIELDS: FieldDef[] = [
+  { name: "name", label: "Full name", required: true },
+  { name: "company", label: "Company / Fund" },
+  { name: "email", label: "Email", type: "email", required: true },
+  { name: "phone", label: "Phone", type: "tel", required: true },
+  { name: "interest", label: "Area of interest", options: ["Equity participation", "Branded residence", "Strategic partnership", "General enquiry"] },
+  { name: "ticket", label: "Indicative ticket size", options: ["Prefer not to say", "₹1–5 Cr", "₹5–25 Cr", "₹25 Cr+"] },
+  { name: "message", label: "Message", textarea: true, full: true },
+];
 
 export default function Investment() {
   const inv = hospitalityPage.investment;
@@ -57,16 +68,51 @@ export default function Investment() {
           ))}
         </div>
 
-        <Reveal delay={0.1}>
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <a href={`mailto:${company.email}?subject=Investment%20Enquiry%20%E2%80%94%20Andaman%20Resort`} className="btn btn-gold !bg-gradient-to-r !from-aqua !to-lagoon !text-[#06262f]">
-              <span className="relative z-10">Request the investor deck</span>
-            </a>
-            <a href="/#contact" className="btn btn-ghost !border-foam/40 !text-foam">
-              <span className="relative z-10">Talk to our team</span>
-            </a>
-          </div>
-        </Reveal>
+        {/* Pin dark vars so this block is unaffected by the light/dark theme toggle */}
+        <div
+          className="mx-auto mt-16 grid max-w-5xl items-start gap-10 lg:grid-cols-2 [&_h3]:!text-foam [&_h4]:!text-foam"
+          style={{
+            "--color-panel":    "#11141d",
+            "--color-silver":   "#c7ced6",
+            "--color-mist":     "#99a1ae",
+            "--ui-surface-xs":  "rgba(255,255,255,0.02)",
+            "--ui-border":      "rgba(255,255,255,0.08)",
+            "--ui-border-md":   "rgba(255,255,255,0.10)",
+          } as React.CSSProperties}
+        >
+          <Reveal>
+            <div>
+              <h3 className="font-serif text-2xl text-foam md:text-3xl">Register your interest.</h3>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-foam/70">
+                Share a few details and our investment team will send the confidential
+                deck and arrange a private walkthrough of the masterplan.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-foam/80">
+                {["Equity & branded-residence options", "EPC builder with a 15-year record", "Phase I opening 2026"].map((t) => (
+                  <li key={t} className="flex items-center gap-3">
+                    <span className="h-px w-6 bg-aqua/70" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`mailto:${company.email}?subject=Investment%20Enquiry%20%E2%80%94%20Andaman%20Resort`}
+                className="mt-7 inline-block text-sm text-aqua underline-offset-4 hover:underline"
+              >
+                Or email us directly →
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ContactForm
+              fields={INVESTOR_FIELDS}
+              accent="lagoon"
+              submitLabel="Request investor deck"
+              successTitle="Thank you."
+              successBody="Our investment team will reach out with the confidential deck shortly."
+            />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

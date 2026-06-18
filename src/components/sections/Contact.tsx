@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import MagneticButton from "@/components/ui/MagneticButton";
+import ContactForm from "@/components/ui/ContactForm";
 import { company, contact } from "@/data/site";
 
 function Pin({ x, y, label, delay = 0 }: { x: string; y: string; label: string; delay?: number }) {
@@ -15,7 +16,7 @@ function Pin({ x, y, label, delay = 0 }: { x: string; y: string; label: string; 
         transition={{ duration: 2.4, repeat: Infinity, delay, ease: "easeOut" }}
       />
       <span className="relative block h-3 w-3 rounded-full bg-gold shadow-[0_0_14px_4px_rgba(212,175,55,0.6)]" />
-      <span className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-base/70 px-2.5 py-1 text-[0.65rem] text-silver backdrop-blur">
+      <span className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-ink/80 px-2.5 py-1 text-[0.65rem] text-silver backdrop-blur">
         {label}
       </span>
     </div>
@@ -78,39 +79,9 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* stylised map */}
+        {/* contact form */}
         <Reveal delay={0.1}>
-          <div className="relative aspect-[5/4] overflow-hidden rounded-[2rem] border border-white/10 bg-[#080b12]">
-            <div
-              aria-hidden
-              className="absolute inset-0 opacity-30"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-                maskImage: "radial-gradient(circle at 50% 50%, #000, transparent 75%)",
-              }}
-            />
-            {/* connecting line */}
-            <svg className="absolute inset-0 h-full w-full" fill="none">
-              <line
-                x1="38%" y1="42%" x2="72%" y2="68%"
-                stroke="url(#cgrad)" strokeWidth="1.5" strokeDasharray="4 5"
-              />
-              <defs>
-                <linearGradient id="cgrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stopColor="#d4af37" />
-                  <stop offset="1" stopColor="#34b9ab" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <Pin x="38%" y="42%" label="Head Office" />
-            <Pin x="72%" y="68%" label="Andaman & Nicobar" delay={1.2} />
-
-            <div className="absolute bottom-5 left-5 font-display text-[0.65rem] uppercase tracking-[0.3em] text-mist">
-              India · Bay of Bengal
-            </div>
-          </div>
+          <ContactForm submitLabel="Send message" />
         </Reveal>
       </div>
     </section>

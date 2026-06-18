@@ -11,7 +11,7 @@ function StatusPill({ status }: { status: Project["status"] }) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[0.65rem] font-medium uppercase tracking-wider ${
-        ongoing ? "bg-gold/15 text-gold" : "bg-white/10 text-silver"
+        ongoing ? "bg-gold/15 text-gold" : "[background-color:var(--ui-border)] text-silver"
       }`}
     >
       <span
@@ -29,7 +29,7 @@ function ProjectCard({ p, featured }: { p: Project; featured?: boolean }) {
     <a
       href="/#projects"
       data-cursor
-      className="group relative block h-full overflow-hidden rounded-3xl border border-white/8 transition-all duration-500 hover:border-gold/45"
+      className="group relative block h-full overflow-hidden rounded-3xl border [border-color:var(--ui-border)] transition-all duration-500 hover:border-gold/45"
     >
       <div className={`relative ${featured ? "aspect-[16/11]" : "aspect-[4/3]"}`}>
         <Image

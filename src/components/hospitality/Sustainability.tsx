@@ -25,7 +25,7 @@ export default function Sustainability() {
           {s.items.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 0.07}>
               <TiltCard max={6} className="h-full rounded-3xl">
-                <div className="card-border h-full p-7">
+                <div className="card-border h-full p-7 bg-[#0b0d14]">
                   <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-lagoon/30 bg-gradient-to-b from-lagoon/15 to-transparent text-aqua">
                     <Icon name={item.icon} />
                   </span>

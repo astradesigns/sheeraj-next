@@ -127,7 +127,7 @@ function Ocean() {
 
   const onMove = (e: ThreeEvent<PointerEvent>) => {
     const t = time.current;
-    if (t - lastSpawn.current < 0.08) return;
+    if (t - lastSpawn.current < 0.05) return;
     lastSpawn.current = t;
     const arr = uniforms.uRipples.value;
     arr[writeIdx.current % RIPPLES].set(e.point.x, -e.point.z, t);
