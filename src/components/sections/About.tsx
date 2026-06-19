@@ -4,7 +4,6 @@ import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import TiltCard from "@/components/ui/TiltCard";
-import MagneticButton from "@/components/ui/MagneticButton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { aboutHighlights, chairman, media, stats } from "@/data/site";
 
@@ -71,25 +70,11 @@ export default function About() {
               </div>
             </TiltCard>
 
-            {/* floating chairman quote */}
+            {/* floating quote */}
             <div className="glass anim-float absolute -bottom-8 -left-4 max-w-xs rounded-2xl p-6 sm:-left-10">
               <p className="font-serif text-lg italic leading-snug text-silver">
                 “{chairman.shortQuote}”
               </p>
-              <div className="mt-4 flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-silver">{chairman.name}</div>
-                  <div className="text-xs text-mist">{chairman.role}</div>
-                </div>
-                <MagneticButton
-                  href="/chairman"
-                  variant="ghost"
-                  className="!px-4 !py-2 text-[0.7rem]"
-                  strength={0.3}
-                >
-                  Chairman&apos;s Message
-                </MagneticButton>
-              </div>
             </div>
           </div>
         </Reveal>

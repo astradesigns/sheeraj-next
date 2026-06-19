@@ -47,6 +47,9 @@ export default function Hero() {
         <source src="/videos/homeHero2.mp4" type="video/mp4" />
       </video>
 
+      {/* black sheet to keep text legible in both themes */}
+      <div className="absolute inset-0 bg-black/40" />
+
       {/* vignette fade into the page background at the bottom edge */}
       <div className="absolute inset-0 [background:linear-gradient(to_top,var(--color-base)_0%,color-mix(in_oklab,var(--color-base)_40%,transparent)_20%,transparent_42%)]" />
 
@@ -57,7 +60,7 @@ export default function Hero() {
           variants={v}
           initial="hidden"
           animate={show}
-          className="eyebrow"
+          className="eyebrow text-white!"
         >
           {company.legalName} · Est. {company.established}
         </motion.span>
@@ -67,7 +70,7 @@ export default function Hero() {
           variants={v}
           initial="hidden"
           animate={show}
-          className="mt-6 max-w-5xl font-serif text-[3.1rem] font-medium leading-[0.98] tracking-tight text-balance filter-[drop-shadow(var(--on-media-shadow))] sm:text-7xl lg:text-[5.6rem]"
+          className="mt-6 max-w-5xl font-serif text-[3.1rem] font-medium leading-[0.98] tracking-tight text-balance text-white! filter-[drop-shadow(var(--on-media-shadow))] sm:text-7xl lg:text-[5.6rem]"
         >
           Building Tomorrow&apos;s{" "}
           <span className="text-gold-gradient italic">Infrastructure.</span>
@@ -78,7 +81,7 @@ export default function Hero() {
           variants={v}
           initial="hidden"
           animate={show}
-          className="mt-7 max-w-xl text-lg leading-relaxed text-on-media-muted"
+          className="mt-7 max-w-xl text-lg leading-relaxed text-white/80"
         >
           Engineering highways, waterways, ring roads — and future destinations
           across India and the islands.
@@ -92,7 +95,11 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center gap-4"
         >
           <MagneticButton href="/#projects">Explore Projects</MagneticButton>
-          <MagneticButton href="/#hospitality" variant="ghost">
+          <MagneticButton
+            href="/#hospitality"
+            variant="ghost"
+            className="text-white! border-[rgba(255,255,255,0.4)]"
+          >
             Discover Hospitality
           </MagneticButton>
         </motion.div>

@@ -149,7 +149,7 @@ export const media = {
 export const chairman = {
   name: "Chairman's Name",
   role: "Founder & Chairman",
-  photo: "/images/chairman.jpg",
+  photo: "/images/chairman-pannu.jpg",
   shortQuote:
     "We don't just build structures — we build the confidence of every community we serve.",
 };
@@ -440,14 +440,20 @@ export type Person = {
 
 export const team = {
   chairman: {
-    name: "Rajeev Sheeraj",
+    name: "Mr. Rajender Singh Pannu",
     role: "Founder & Chairman",
-    photo: "/images/chairman.jpg",
+    photo: "/images/chairman-pannu.jpg",
     message:
       "Everything bearing the Sheeraj name is built to outlast us. That quiet promise — made when we laid our first kilometre of highway — still guides every decision we make, from canals and corridors to the shores of the Andamans.",
   } as Person,
+  md: {
+    name: "Director One",
+    role: "Managing Director",
+    photo: "/images/about-engineering.jpg",
+    message:
+      "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline.",
+  } as Person,
   directors: [
-    { name: "Director One", role: "Managing Director", photo: "/images/about-engineering.jpg", message: "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline." },
     { name: "Director Two", role: "Director — Operations", photo: "/images/project-highway.jpg", message: "Our fleet and field teams turn drawings into roads, season after season, without ever cutting a corner." },
     { name: "Director Three", role: "Director — Hospitality", photo: "/images/resort-overwater.jpg", message: "On the islands we build experiences as carefully as we have always built bridges." },
     { name: "Director Four", role: "Director — Engineering", photo: "/images/project-bridge.jpg", message: "Precision is a culture here. It lives in the way we plan, pour and finish every structure." },
@@ -459,6 +465,21 @@ export const team = {
     message:
       "Disciplined finance is the foundation beneath every structure we deliver — transparent, audited, and built for the long term.",
   } as Person,
+};
+
+// Full chairman address rendered in the leadership card on the About page.
+export const chairmanAddress = {
+  before: [
+    "It gives me immense pleasure to connect with you through this medium. May this message find you in best of health and happiness. Having an experience of about 40 years in the field of construction and encountering a lot of turbulence and overcoming them eventually by trial-and-error methods, I had developed some revolutionary engineering strategies. I have a vision that I wanted to manifest which led to the birth of an enigma called SHEERAJ PROJECTS PRIVATE LIMITED. Its amalgamation with the Sheeraj Family's paragons of virtue has aided us in experiencing exponential growth in a brief time. Finally, I wish to express it as we have this moment to catch breath in the company of your thoughts.",
+  ],
+  quoteLeadIn: "I believe",
+  quote:
+    "To accomplish great things, we must not only act, but also dream together, not only plan, but believe together.",
+  after: [
+    "Our country is on the path of becoming great again after several centuries of exploitation and turmoil, and without missing such an opportunity we want to contribute as much as we can in this trajectory towards development. Given the importance of infrastructure projects in a country's development and considering the quality which we have maintained in our projects, we desire to be among the leading NATION BUILDERS.",
+    "I would like to take this opportunity to thank you whole-heartedly for your commitment, sacrifice, sweat and blood in all our present and future endeavours. Through your care and perseverance we have been able to complete prestigious projects and, as a result, exhibit unequivocal trust in our clients.",
+    "We are grateful for our associates' and bankers' perpetual assistance as well as encouragement in our commitments. On behalf of the entire SHEERAJ family, I would like to thank you for your continued credence in us and wish you all the best for your future endeavours.",
+  ],
 };
 
 export const chairmanMessage = {

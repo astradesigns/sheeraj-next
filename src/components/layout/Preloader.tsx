@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Logo from "@/components/ui/Logo";
+import { company } from "@/data/site";
 
 export default function Preloader() {
   const [done, setDone] = useState(false);
@@ -40,8 +41,17 @@ export default function Preloader() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2.5"
           >
-            <Logo />
+            <Logo variant="seal" size={56} />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-lg font-semibold uppercase tracking-[0.12em] text-silver sm:text-xl">
+                {company.name}
+              </span>
+              <span className="mt-1 font-serif text-[0.8rem] italic lowercase tracking-wide text-gold">
+                {company.motto}
+              </span>
+            </span>
           </motion.div>
 
           <div className="mt-10 h-px w-56 overflow-hidden bg-white/10">

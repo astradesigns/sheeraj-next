@@ -44,11 +44,13 @@ export function RevealText({
   text,
   className,
   delay = 0,
+  stagger = 0.06,
   as: Tag = "span",
 }: {
   text: string;
   className?: string;
   delay?: number;
+  stagger?: number;
   as?: "span" | "h1" | "h2" | "h3" | "p";
 }) {
   const words = text.split(" ");
@@ -63,7 +65,7 @@ export function RevealText({
         viewport={{ once: true, margin: "0px 0px -10% 0px" }}
         variants={{
           hidden: {},
-          show: { transition: { staggerChildren: 0.06, delayChildren: delay } },
+          show: { transition: { staggerChildren: stagger, delayChildren: delay } },
         }}
       >
         {words.map((word, i) => (

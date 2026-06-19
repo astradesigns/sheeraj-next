@@ -528,6 +528,24 @@
 .anim-spin-slow { animation: spin-slow 90s linear infinite; }
 
 /* ----------------------------------------------------------------------------
+   Chairman message — internal scroll area (scrolls first, then chains to page)
+---------------------------------------------------------------------------- */
+.chairman-scroll {
+  overscroll-behavior: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(170, 140, 70, 0.5) transparent;
+}
+.chairman-scroll::-webkit-scrollbar { width: 6px; }
+.chairman-scroll::-webkit-scrollbar-track { background: transparent; }
+.chairman-scroll::-webkit-scrollbar-thumb {
+  background: rgba(170, 140, 70, 0.45);
+  border-radius: 9999px;
+}
+.chairman-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(170, 140, 70, 0.7);
+}
+
+/* ----------------------------------------------------------------------------
    Custom cursor — hide native on capable devices
 ---------------------------------------------------------------------------- */
 @media (hover: hover) and (pointer: fine) {

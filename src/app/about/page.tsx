@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import PersonCard from "@/components/ui/PersonCard";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { aboutHighlights, company, media, stats, team } from "@/data/site";
+import { aboutHighlights, chairmanAddress, company, media, stats, team } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,7 +30,6 @@ export default function AboutPage() {
         image={media.aboutImage}
       >
         <MagneticButton href="/projects">View our projects</MagneticButton>
-        <MagneticButton href="/chairman" variant="ghost">Message from the Chairman</MagneticButton>
       </PageHero>
 
       {/* story + stats */}
@@ -85,23 +84,91 @@ export default function AboutPage() {
             className="mb-14"
           />
 
+          {/* chairman — compact card; the long message scrolls inside, then the page */}
           <Reveal>
-            <PersonCard person={team.chairman} featured />
+            <div className="glass overflow-hidden rounded-[1.75rem] p-5 md:p-8">
+              <div className="grid gap-6 md:grid-cols-[0.36fr_1.64fr] md:gap-10">
+                {/* portrait */}
+                <div>
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border [border-color:var(--ui-border-md)]">
+                    <Image
+                      src={team.chairman.photo}
+                      alt={team.chairman.name}
+                      fill
+                      priority
+                      sizes="(max-width:768px) 100vw, 26vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-base/50 to-transparent" />
+                  </div>
+                  <div className="mt-4">
+                    <span className="eyebrow">{team.chairman.role}</span>
+                    <h3 className="mt-2 font-serif text-2xl tracking-tight md:text-3xl">
+                      {team.chairman.name}
+                    </h3>
+                    <div className="mt-4 h-px w-14 bg-linear-to-r from-gold to-transparent" />
+                  </div>
+                </div>
+
+                {/* message — scrolls internally first, then chains to the page */}
+                <div
+                  data-lenis-prevent
+                  className="chairman-scroll max-h-88 overflow-y-auto pr-3 md:max-h-104 md:pr-4"
+                >
+                  {chairmanAddress.before.map((p, i) => (
+                    <p
+                      key={`b-${i}`}
+                      className={`leading-relaxed text-mist md:text-lg md:leading-loose ${
+                        i > 0 ? "mt-5" : ""
+                      }`}
+                    >
+                      {p}
+                    </p>
+                  ))}
+
+                  <figure className="my-7 border-l-2 border-gold/60 pl-5">
+                    <figcaption className="eyebrow mb-2">{chairmanAddress.quoteLeadIn}</figcaption>
+                    <blockquote className="font-serif text-lg italic leading-relaxed text-gold-gradient md:text-xl md:leading-relaxed">
+                      “{chairmanAddress.quote}”
+                    </blockquote>
+                  </figure>
+
+                  {chairmanAddress.after.map((p, i) => (
+                    <p
+                      key={`a-${i}`}
+                      className="mt-5 leading-relaxed text-mist md:text-lg md:leading-loose"
+                    >
+                      {p}
+                    </p>
+                  ))}
+
+                  <div className="mt-8">
+                    <div className="font-serif text-xl italic text-silver">{team.chairman.name}</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.2em] text-mist">
+                      {team.chairman.role}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Reveal>
 
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {team.directors.map((d, i) => (
-              <Reveal key={d.name} delay={i * 0.07}>
-                <PersonCard person={d} />
-              </Reveal>
-            ))}
-          </div>
+          {/* managing director — same featured layout, image right (alternating) */}
+          <Reveal className="mt-6">
+            <PersonCard person={team.md} featured size="md" reverse />
+          </Reveal>
 
-          <div className="mt-6 grid lg:grid-cols-3">
-            <Reveal className="lg:col-start-2">
-              <PersonCard person={team.ca} />
+          {/* directors — same featured layout as the MD, alternating image side */}
+          {team.directors.map((d, i) => (
+            <Reveal key={d.name} className="mt-6" delay={i * 0.05}>
+              <PersonCard person={d} featured size="md" reverse={i % 2 === 1} />
             </Reveal>
-          </div>
+          ))}
+
+          {/* CA — same layout, minimum space */}
+          <Reveal className="mt-6">
+            <PersonCard person={team.ca} featured size="sm" reverse />
+          </Reveal>
         </div>
       </section>
 

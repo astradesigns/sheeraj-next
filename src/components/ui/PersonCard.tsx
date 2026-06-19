@@ -4,18 +4,35 @@ import Image from "next/image";
 import TiltCard from "./TiltCard";
 import type { Person } from "@/data/site";
 
+const SIZES = {
+  lg: { minH: "min-h-[24rem]", pad: "p-8 md:p-12", name: "text-3xl md:text-5xl", msg: "text-lg md:text-xl" },
+  md: { minH: "min-h-[18rem]", pad: "p-7 md:p-9", name: "text-2xl md:text-3xl", msg: "text-base md:text-lg" },
+  sm: { minH: "min-h-[13rem]", pad: "p-6 md:p-7", name: "text-xl md:text-2xl", msg: "text-sm md:text-base" },
+} as const;
+
 export default function PersonCard({
   person,
   featured = false,
+  reverse = false,
+  size = "lg",
 }: {
   person: Person;
   featured?: boolean;
+  reverse?: boolean;
+  size?: "lg" | "md" | "sm";
 }) {
   if (featured) {
+    const s = SIZES[size];
     return (
       <TiltCard max={4} className="rounded-[1.75rem]">
-        <div className="glass grid items-stretch overflow-hidden rounded-[1.75rem] md:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative min-h-[20rem] overflow-hidden">
+        <div
+          className={`glass grid items-stretch overflow-hidden rounded-[1.75rem] ${
+            reverse ? "md:grid-cols-[1.1fr_0.9fr]" : "md:grid-cols-[0.9fr_1.1fr]"
+          }`}
+        >
+          <div
+            className={`relative overflow-hidden ${s.minH} ${reverse ? "md:order-2" : ""}`}
+          >
             <Image
               src={person.photo}
               alt={person.name}
@@ -23,12 +40,18 @@ export default function PersonCard({
               sizes="(max-width:768px) 100vw, 40vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent md:bg-gradient-to-r" />
+            <div
+              className={`absolute inset-0 bg-gradient-to-t from-base/60 to-transparent ${
+                reverse ? "md:bg-gradient-to-l" : "md:bg-gradient-to-r"
+              }`}
+            />
           </div>
-          <div className="flex flex-col justify-center p-8 md:p-10">
+          <div
+            className={`flex flex-col justify-center ${s.pad} ${reverse ? "md:order-1" : ""}`}
+          >
             <span className="eyebrow">{person.role}</span>
-            <h3 className="mt-4 font-serif text-3xl tracking-tight md:text-4xl">{person.name}</h3>
-            <p className="mt-5 font-serif text-lg italic leading-relaxed text-mist">
+            <h3 className={`mt-4 font-serif tracking-tight ${s.name}`}>{person.name}</h3>
+            <p className={`mt-5 font-serif italic leading-relaxed text-mist ${s.msg}`}>
               “{person.message}”
             </p>
             <div className="mt-6 h-px w-16 bg-gradient-to-r from-gold to-transparent" />
