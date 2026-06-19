@@ -224,7 +224,9 @@ export default function RentalForm() {
                       ))}
                     </select>
                   </div>
-                  <Field label="Model / Spec" name="model" value={form.model} onChange={update} />
+                  <div className="self-end">
+                    <Field label="Model / Spec" name="model" value={form.model} onChange={update} />
+                  </div>
                   <Field label="Company" name="company" value={form.company} onChange={update} />
                   <Field label="Your name" name="name" value={form.name} onChange={update} error={errors.name} />
                   <Field label="Email" name="email" type="email" value={form.email} onChange={update} error={errors.email} />

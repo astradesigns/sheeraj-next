@@ -153,21 +153,31 @@ export default function AboutPage() {
             </div>
           </Reveal>
 
-          {/* managing director — same featured layout, image right (alternating) */}
+          {/* managing director — Ankit Pannu (same card + tilt animation as directors) */}
           <Reveal className="mt-6">
-            <PersonCard person={team.md} featured size="md" reverse />
+            <PersonCard
+              person={{
+                name: "Mr. Ankit Pannu",
+                role: "Managing Director",
+                photo: "/images/boardMember/ankitSir.png",
+                message:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — a placeholder message to be replaced with Ankit Pannu’s own words.",
+              }}
+              featured
+              size="md"
+            />
           </Reveal>
 
-          {/* directors — same featured layout as the MD, alternating image side */}
+          {/* directors — alternate image side: first director's image on the left */}
           {team.directors.map((d, i) => (
             <Reveal key={d.name} className="mt-6" delay={i * 0.05}>
-              <PersonCard person={d} featured size="md" reverse={i % 2 === 1} />
+              <PersonCard person={d} featured size="md" reverse={i % 2 === 0} />
             </Reveal>
           ))}
 
-          {/* CA — same layout, minimum space */}
+          {/* CA — continues the alternation: image on the right, shorter (compact) card */}
           <Reveal className="mt-6">
-            <PersonCard person={team.ca} featured size="sm" reverse />
+            <PersonCard person={team.ca} featured size="sm" />
           </Reveal>
         </div>
       </section>

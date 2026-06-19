@@ -83,8 +83,7 @@ export default function Hero() {
           animate={show}
           className="mt-7 max-w-xl text-lg leading-relaxed text-white/80"
         >
-          Engineering highways, waterways, ring roads — and future destinations
-          across India and the islands.
+          From national highways and urban ring roads to complex waterways, we build the critical infrastructure shaping the future of mainland India and its islands.
         </motion.p>
 
         <motion.div
@@ -94,14 +93,7 @@ export default function Hero() {
           animate={show}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <MagneticButton href="/#projects">Explore Projects</MagneticButton>
-          <MagneticButton
-            href="/#hospitality"
-            variant="ghost"
-            className="text-white! border-[rgba(255,255,255,0.4)]"
-          >
-            Discover Hospitality
-          </MagneticButton>
+          <MagneticButton href="/#projects">View Infrastructure Portfolio</MagneticButton>
         </motion.div>
       </div>
 

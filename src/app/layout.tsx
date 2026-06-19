@@ -42,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${sora.variable} ${fraunces.variable}`}
     >
       {/* Prevent flash of wrong theme on initial load */}

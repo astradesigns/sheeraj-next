@@ -10,13 +10,13 @@ export const company = {
   motto: "Building Establishments",
   tagline: "Building India's Infrastructure. Crafting Island Escapes.",
   theme: "Building the Roads That Connect India. Building the Destinations That Inspire It.",
-  established: 2009,
+  established: 2016,
   domain: "sheerajprojects.com",
   email: "info@sheerajprojects.com",
   careersEmail: "careers@sheerajprojects.com",
-  phone: "+91 00000 00000",
-  address: "Head Office, India",
-  social: { linkedin: "#", instagram: "#", facebook: "#" },
+  phone: "+91-9355125999",
+  address: "1411, Tower 1, DLF Corporate Greens, Sector 74A, Gurugram, Haryana - 122004",
+  social: { instagram: "#", youtube: "#", facebook: "#", linkedin: "#" },
   erpUrl: "#",
 };
 
@@ -47,7 +47,7 @@ export const nav: NavItem[] = [
 ];
 
 export const stats = [
-  { value: 15, suffix: "+", label: "Years of engineering" },
+  { value: 10, suffix: "+", label: "Years of engineering" },
   { value: 120, suffix: "+", label: "Projects delivered" },
   { value: 850, suffix: " km", label: "Highways & canals built" },
   { value: 6, suffix: "", label: "States of operation" },
@@ -109,10 +109,10 @@ export const services: Service[] = [
 ];
 
 export const aboutHighlights = [
-  "ISO-grade quality processes across every package",
-  "In-house engineering, fleet & project-controls teams",
-  "Safety-first culture with zero-harm targets",
-  "On-time delivery backed by a 15-year track record",
+  "ISO-compliant quality management across every contract package",
+  "In-house engineering, heavy machinery fleet, and logistics asset control",
+  "Safety-first operating culture with strict zero-incident targets",
+  "Turnkey delivery backed by a solid 10-year multi-terrain track record",
 ];
 
 export const buildSequence = [
@@ -143,7 +143,7 @@ export const media = {
   aboutImage: "/images/about-engineering.jpg",
   hospitalityHero: "/images/hospitality-hero.jpg",
   hospitalityVideo: "/videos/hospitality-hero.mp4",
-  islandAerial: "/images/island-aerial.jpg",
+  islandAerial: "/images/island-aerial2.jpg",
 };
 
 export const chairman = {
@@ -151,7 +151,7 @@ export const chairman = {
   role: "Founder & Chairman",
   photo: "/images/chairman-pannu.jpg",
   shortQuote:
-    "We don't just build structures — we build the confidence of every community we serve.",
+    "We don't just clear pathways or construct layouts—we build infrastructure that drives regional economic growth.",
 };
 
 export const hospitality = {
@@ -165,7 +165,7 @@ export const hospitality = {
     { title: "Signature Experiences", blurb: "Overwater decks, infinity pools, wellness retreats.", icon: "sun" as IconName },
     { title: "Resilient Construction", blurb: "Coastal-grade structures built to marine durability standards.", icon: "shield" as IconName },
   ],
-  image: "/images/island-aerial.jpg",
+  image:"/images/island-aerial2.jpg",
 };
 
 export type ProjectStatus = "Executed" | "Ongoing" | "Awarded";
@@ -228,7 +228,7 @@ export const projects: Project[] = [
     status: "Ongoing",
     year: "Jun 2026",
     blurb: "Balance works on two interchanges of the Jaipur Ring Road (NH-148C).",
-    image: "/images/project-expressway.jpg",
+    image: "/images/jaipur/jaipur-ring-road-1.jpg",
   },
 
   // ── Awarded (4) ──
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     status: "Awarded",
     year: "50-yr concession",
     blurb: "Design, build, finance, operate & transfer of the Megapode Resort at Sri Vijaya Puram.",
-    image: "/images/island-aerial.jpg",
+    image: "/images/island-aerial2.jpg",
   },
   {
     name: "Four-Laning of GGM–Alwar Road (NH-248A), Nuh",
@@ -271,14 +271,28 @@ export const projects: Project[] = [
 ];
 
 export const partners = [
-  "Aurelia Infra",
-  "Meridian Steel",
-  "TerraForm EPC",
-  "Vayu Logistics",
-  "Coastline Materials",
-  "Stratus Consulting",
-  "Granite & Co.",
-  "Helios Energy",
+  "Volvo",
+  "Ashok Leyland",
+  "LeeBoy",
+  "Linnhoff",
+  "JCB",
+  "Tata Motors",
+  "Terex",
+  "Caterpillar",
+  "Schwing Stetter",
+  "Mahindra",
+];
+
+export const bankers = [
+  "HDFC Bank",
+  "IndusInd Bank",
+  "Yes Bank",
+  "ICICI Bank",
+  "IDFC First Bank",
+  "Federal Bank",
+  "Axis Bank",
+  "Punjab National Bank",
+  "Union Bank of India",
 ];
 
 export const machinery = [
@@ -406,7 +420,7 @@ export const hospitalityPage = {
     ],
   },
   gallery: [
-    "/images/island-aerial.jpg",
+    "/images/island-aerial2.jpg",
     "/images/resort-overwater.jpg",
     "/images/exp-infinity-pool.jpg",
     "/images/exp-overwater-deck.jpg",
@@ -454,13 +468,13 @@ export const team = {
       "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline.",
   } as Person,
   directors: [
-    { name: "Director Two", role: "Director — Operations", photo: "/images/project-highway.jpg", message: "Our fleet and field teams turn drawings into roads, season after season, without ever cutting a corner." },
-    { name: "Director Three", role: "Director — Hospitality", photo: "/images/resort-overwater.jpg", message: "On the islands we build experiences as carefully as we have always built bridges." },
-    { name: "Director Four", role: "Director — Engineering", photo: "/images/project-bridge.jpg", message: "Precision is a culture here. It lives in the way we plan, pour and finish every structure." },
+    { name: "Mr. Rahul Singh Gulia", role: "Director", photo: "/images/boardMember/rahulSir.png", message: "Our fleet and field teams turn drawings into roads, season after season, without ever cutting a corner." },
+    { name: "Mr. Pavitra Kumar", role: "Director", photo: "/images/boardMember/pavitraSir.png", message: "On the islands we build experiences as carefully as we have always built bridges." },
+    { name: "Mr. Arpit Kadyan", role: "Director", photo: "/images/boardMember/arpitSir.png", message: "Precision is a culture here. It lives in the way we plan, pour and finish every structure." },
   ] as Person[],
   ca: {
-    name: "S. Menon",
-    role: "Chief Financial Officer · Chartered Accountant",
+    name: "Mr. Alok Bishnoi",
+    role: "Chartered Accountant",
     photo: "/images/project-government.jpg",
     message:
       "Disciplined finance is the foundation beneath every structure we deliver — transparent, audited, and built for the long term.",
@@ -537,14 +551,56 @@ export type ProjectDetail = {
   gallery: string[];
   facts: { label: string; value: string }[];
   timeline: { phase: string; label: string }[];
+  /** Full official contract title, when it differs from the display name. */
+  officialName?: string;
+  /** Awarding authority / client. */
+  client?: string;
+  /** Headline contract value, pre-formatted (e.g. "₹107.29 Cr"). */
+  value?: string;
+  /** The stretch / section the works cover. */
+  stretch?: string;
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "jaipur-ring-road-nh-148c-two-interchanges": {
+    officialName:
+      "Construction of Balance Works of Two Number of Interchanges at Jaipur Ring Road (NH-148C) from Tonk Road (NH-52) to Ajmer Road Section (NH-48), Rajasthan — National Highway Authority of India",
+    client: "National Highway Authority of India (NHAI)",
+    value: "₹107.29 Cr",
+    stretch: "Tonk Road (NH-52) → Ajmer Road (NH-48)",
+    overview:
+      "Construction of the balance works of two interchanges on the Jaipur Ring Road (NH-148C), connecting the Tonk Road (NH-52) and Ajmer Road (NH-48) sections of Rajasthan's capital. Executed for the National Highway Authority of India, the package delivers grade-separated interchanges, ramps, service roads and safety systems engineered to national-highway standards — easing through-traffic and unlocking orbital connectivity around Jaipur.",
+    scope: [
+      "Two grade-separated interchanges",
+      "Ramps & loop connectors",
+      "Service roads & cross-drainage",
+      "Road furniture, signage & lighting",
+      "Pavement & safety systems to NHAI spec",
+    ],
+    gallery: [
+      "/images/jaipur/jaipur-ring-road-2.jpg",
+      "/images/jaipur/jaipur-ring-road-3.jpg",
+      "/images/jaipur/jaipur-ring-road-4.jpg",
+      "/images/jaipur/jaipur-ring-road-5.jpg",
+      "/images/jaipur/jaipur-ring-road-6.jpg",
+    ],
+    facts: [
+      { label: "State", value: "Rajasthan" },
+      { label: "Highway", value: "NH-148C" },
+      { label: "Project Value", value: "₹107.29 Cr" },
+      { label: "Completion", value: "June 2026" },
+    ],
+    timeline: [
+      { phase: "Earthwork", label: "Formation & embankment" },
+      { phase: "Structures", label: "Interchanges & ramps" },
+      { phase: "Surfacing", label: "Pavement & finishing" },
+    ],
+  },
   "andaman-island-resort": {
     overview:
       "Our flagship luxury resort on a pristine Andaman island — beachfront villas, overwater suites, a lagoon infinity pool and a wellness sanctuary, engineered to coastal-grade durability and built to disappear into the landscape.",
     scope: ["40-acre low-density masterplan", "Beachfront & overwater villas", "Lagoon infinity pool & marine centre", "Solar-ready, reef-safe systems"],
-    gallery: ["/images/resort-overwater.jpg", "/images/exp-infinity-pool.jpg", "/images/exp-overwater-deck.jpg", "/images/island-aerial.jpg"],
+    gallery: ["/images/resort-overwater.jpg", "/images/exp-infinity-pool.jpg", "/images/exp-overwater-deck.jpg", "/images/island-aerial2.jpg"],
     facts: [
       { label: "Location", value: "Andaman & Nicobar Islands" },
       { label: "Status", value: "Ongoing · Phase I" },

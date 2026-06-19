@@ -1,17 +1,16 @@
 "use client";
 
-import Marquee from "@/components/ui/Marquee";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { partners } from "@/data/site";
+import { partners, bankers } from "@/data/site";
 
-function Chip({ name }: { name: string }) {
+function LogoCard({ name }: { name: string }) {
   return (
-    <span className="group inline-flex items-center gap-3 whitespace-nowrap rounded-full border [border-color:var(--ui-border)] [background-color:var(--ui-surface-xs)] px-7 py-4 transition-all duration-300 hover:scale-110 hover:border-gold/40 hover:[background-color:var(--ui-surface-md)]">
-      <span className="h-2 w-2 rounded-full bg-gold/60 transition-colors group-hover:bg-gold" />
-      <span className="font-display text-lg tracking-wide text-silver/80 transition-colors group-hover:text-silver">
+    <div className="flex h-24 w-44 items-center justify-center rounded-2xl border border-black/5 bg-white px-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+      {/* swap this span for <img src="/logo/partners/<file>.png" alt={name} /> when logos are added */}
+      <span className="text-center font-display text-[1rem] font-semibold tracking-wide text-zinc-800">
         {name}
       </span>
-    </span>
+    </div>
   );
 }
 
@@ -20,29 +19,46 @@ export default function Partners() {
     <section id="partners" className="relative scroll-mt-24 py-28 md:py-32">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Trusted By"
+          eyebrow="Fleet Partners"
           title={
             <>
-              A network that <span className="text-gold-gradient">delivers.</span>
+              A fleet that <span className="text-gold-gradient">delivers.</span>
             </>
           }
-          intro="Public authorities, suppliers, and design partners who build alongside us."
+          intro="Equipment, logistics, and supply partners who keep every site moving."
           align="center"
           className="mb-16"
         />
       </div>
 
-      <div className="flex flex-col gap-5">
-        <Marquee speed={42}>
+      <div className="container-x">
+        <div className="flex flex-wrap justify-center gap-5">
           {partners.map((p) => (
-            <Chip key={p} name={p} />
+            <LogoCard key={p} name={p} />
           ))}
-        </Marquee>
-        <Marquee speed={50} reverse>
-          {[...partners].reverse().map((p) => (
-            <Chip key={p} name={p} />
+        </div>
+      </div>
+
+      <div className="container-x mt-28 md:mt-32">
+        <SectionHeading
+          eyebrow="Our Bankers"
+          title={
+            <>
+              Financial strength that <span className="text-gold-gradient">backs us.</span>
+            </>
+          }
+          intro="Leading institutions that fund and underwrite our infrastructure at scale."
+          align="center"
+          className="mb-16"
+        />
+      </div>
+
+      <div className="container-x">
+        <div className="flex flex-wrap justify-center gap-5">
+          {bankers.map((b) => (
+            <LogoCard key={b} name={b} />
           ))}
-        </Marquee>
+        </div>
       </div>
     </section>
   );

@@ -5,9 +5,33 @@ import TiltCard from "./TiltCard";
 import type { Person } from "@/data/site";
 
 const SIZES = {
-  lg: { minH: "min-h-[24rem]", pad: "p-8 md:p-12", name: "text-3xl md:text-5xl", msg: "text-lg md:text-xl" },
-  md: { minH: "min-h-[18rem]", pad: "p-7 md:p-9", name: "text-2xl md:text-3xl", msg: "text-base md:text-lg" },
-  sm: { minH: "min-h-[13rem]", pad: "p-6 md:p-7", name: "text-xl md:text-2xl", msg: "text-sm md:text-base" },
+  lg: {
+    pad: "p-6 md:p-10",
+    colsDefault: "md:grid-cols-[1.6fr_0.4fr]",
+    colsReverse: "md:grid-cols-[0.4fr_1.6fr]",
+    portrait: "aspect-[3/4]",
+    name: "text-3xl md:text-5xl",
+    msg: "text-lg md:text-xl",
+  },
+  md: {
+    pad: "p-5 md:p-8",
+    colsDefault: "md:grid-cols-[1.64fr_0.36fr]",
+    colsReverse: "md:grid-cols-[0.36fr_1.64fr]",
+    portrait: "aspect-[3/4]",
+    name: "text-2xl md:text-3xl",
+    msg: "text-base md:text-lg",
+  },
+  // Same width, text and padding as the director cards, but a shorter card:
+  // the portrait keeps its width and gets a capped (shorter) height on desktop,
+  // which pulls the overall card height down while the message stays legible.
+  sm: {
+    pad: "p-5 md:p-8",
+    colsDefault: "md:grid-cols-[1.64fr_0.36fr]",
+    colsReverse: "md:grid-cols-[0.36fr_1.64fr]",
+    portrait: "aspect-[3/4] md:aspect-auto md:h-52",
+    name: "text-2xl md:text-3xl",
+    msg: "text-base md:text-lg",
+  },
 } as const;
 
 export default function PersonCard({
@@ -25,36 +49,35 @@ export default function PersonCard({
     const s = SIZES[size];
     return (
       <TiltCard max={4} className="rounded-[1.75rem]">
-        <div
-          className={`glass grid items-stretch overflow-hidden rounded-[1.75rem] ${
-            reverse ? "md:grid-cols-[1.1fr_0.9fr]" : "md:grid-cols-[0.9fr_1.1fr]"
-          }`}
-        >
+        <div className={`glass overflow-hidden rounded-[1.75rem] ${s.pad}`}>
           <div
-            className={`relative overflow-hidden ${s.minH} ${reverse ? "md:order-2" : ""}`}
+            className={`grid gap-6 md:gap-10 ${reverse ? s.colsReverse : s.colsDefault}`}
           >
-            <Image
-              src={person.photo}
-              alt={person.name}
-              fill
-              sizes="(max-width:768px) 100vw, 40vw"
-              className="object-cover"
-            />
+            {/* message */}
             <div
-              className={`absolute inset-0 bg-gradient-to-t from-base/60 to-transparent ${
-                reverse ? "md:bg-gradient-to-l" : "md:bg-gradient-to-r"
-              }`}
-            />
-          </div>
-          <div
-            className={`flex flex-col justify-center ${s.pad} ${reverse ? "md:order-1" : ""}`}
-          >
-            <span className="eyebrow">{person.role}</span>
-            <h3 className={`mt-4 font-serif tracking-tight ${s.name}`}>{person.name}</h3>
-            <p className={`mt-5 font-serif italic leading-relaxed text-mist ${s.msg}`}>
-              “{person.message}”
-            </p>
-            <div className="mt-6 h-px w-16 bg-gradient-to-r from-gold to-transparent" />
+              className={`order-2 flex flex-col justify-center ${reverse ? "md:order-2" : "md:order-1"}`}
+            >
+              <span className="eyebrow">{person.role}</span>
+              <h3 className={`mt-3 font-serif tracking-tight ${s.name}`}>{person.name}</h3>
+              <p className={`mt-5 font-serif italic leading-relaxed text-silver md:leading-loose ${s.msg}`}>
+                “{person.message}”
+              </p>
+              <div className="mt-6 h-px w-16 bg-linear-to-r from-gold to-transparent" />
+            </div>
+
+            {/* contained portrait */}
+            <div className={`order-1 ${reverse ? "md:order-1" : "md:order-2"}`}>
+              <div className={`relative ${s.portrait} overflow-hidden rounded-2xl border [border-color:var(--ui-border-md)]`}>
+                <Image
+                  src={person.photo}
+                  alt={person.name}
+                  fill
+                  sizes="(max-width:768px) 100vw, 22rem"
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-base/50 to-transparent" />
+              </div>
+            </div>
           </div>
         </div>
       </TiltCard>

@@ -28,7 +28,7 @@ export default function Investment() {
     >
       {/* faded island backdrop */}
       <Image
-        src="/images/island-aerial.jpg"
+        src="/images/island-aerial2.jpg"
         alt=""
         fill
         sizes="100vw"
