@@ -43,21 +43,41 @@ export default function Navbar() {
     scrollToTarget(to);
   };
 
+  // A nav route is active when the current path matches it — or is nested
+  // beneath it, so /projects/[slug] still lights up the "Projects" tab.
+  // In-page hash links (/#…) are not treated as a distinct active route.
+  const isActive = (to?: string) => {
+    if (!to || to.startsWith("/#")) return false;
+    if (to === "/") return pathname === "/";
+    return pathname === to || pathname.startsWith(`${to}/`);
+  };
+
   const renderLink = (item: NavItem, mobile = false) => {
+    const active = isActive(item.to);
     const base = mobile
-      ? "block py-3 text-2xl font-serif text-silver hover:text-gold transition-colors"
-      : `relative text-sm transition-colors hover:text-gold ${
-          overHero ? "text-on-media" : "text-silver/85"
+      ? `block py-3 text-2xl font-serif transition-colors ${
+          active ? "text-gold" : "text-silver hover:text-gold"
+        }`
+      : `relative text-sm transition-colors ${
+          active ? "text-gold" : `hover:text-gold ${overHero ? "text-on-media" : "text-silver/85"}`
         }`;
     const label = (
-      <span className="inline-flex items-center gap-1.5">
-        {item.label}
-        {item.tag && (
-          <span className="rounded-full bg-gold/15 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-gold">
-            {item.tag}
-          </span>
+      <>
+        <span className="inline-flex items-center gap-1.5">
+          {item.label}
+          {item.tag && (
+            <span className="rounded-full bg-gold/15 px-1.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-gold">
+              {item.tag}
+            </span>
+          )}
+        </span>
+        {!mobile && active && (
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -bottom-1.5 left-0 h-px w-full bg-gold"
+          />
         )}
-      </span>
+      </>
     );
     if (item.to?.startsWith("/#")) {
       return (
@@ -112,8 +132,10 @@ export default function Navbar() {
                   onMouseLeave={() => setOpenDrop(null)}
                 >
                   <button
-                    className={`flex items-center gap-1.5 text-sm transition-colors hover:text-gold ${
-                      overHero ? "text-on-media" : "text-silver/85"
+                    className={`flex items-center gap-1.5 text-sm transition-colors ${
+                      item.children.some((c) => isActive(c.to))
+                        ? "text-gold"
+                        : `hover:text-gold ${overHero ? "text-on-media" : "text-silver/85"}`
                     }`}
                   >
                     {item.label}
@@ -138,7 +160,7 @@ export default function Navbar() {
                               onClick={(e) => handleHash(e, c.to!)}
                               className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:[background-color:var(--ui-surface-xs)]"
                             >
-                              <span className="text-sm text-silver group-hover:text-gold">{c.label}</span>
+                              <span className={`text-sm group-hover:text-gold ${isActive(c.to) ? "text-gold" : "text-silver"}`}>{c.label}</span>
                               <span className="text-[0.65rem] text-mist">{c.note}</span>
                             </a>
                           ) : (
@@ -147,7 +169,7 @@ export default function Navbar() {
                               href={c.to ?? "#"}
                               className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:[background-color:var(--ui-surface-xs)]"
                             >
-                              <span className="text-sm text-silver group-hover:text-gold">{c.label}</span>
+                              <span className={`text-sm group-hover:text-gold ${isActive(c.to) ? "text-gold" : "text-silver"}`}>{c.label}</span>
                               <span className="text-[0.65rem] text-mist">{c.note}</span>
                             </Link>
                           )

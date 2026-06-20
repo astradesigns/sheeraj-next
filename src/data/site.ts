@@ -199,7 +199,7 @@ export const projects: Project[] = [
     status: "Executed",
     year: "2025",
     blurb: "Balance four-laning works on the Mahuva–Kagavadar section of NH-8E.",
-    image: "/images/project-expressway.jpg",
+    image: "/images/aboutMain.jpg",
   },
 
   // ── Ongoing (3) ──
@@ -519,7 +519,7 @@ export const serviceDetail: Record<string, { points: string[]; image: string }> 
   },
   "ring-roads": {
     points: ["Orbital corridors & city bypasses", "Grade separators and interchanges", "Congestion relief for growing regions"],
-    image: "/images/project-expressway.jpg",
+    image: "/images/aboutMain.jpg",
   },
   canals: {
     points: ["Lined main canals & distributary networks", "Cross-drainage and regulating structures", "Assured irrigation across thousands of hectares"],
@@ -617,7 +617,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     overview:
       "A multi-lane state-highway corridor with service roads, drainage and safety furniture, delivered ahead of schedule to exacting IRC standards.",
     scope: ["Multi-lane carriageway", "Service roads & junctions", "Drainage & safety furniture", "Road-marking & signage"],
-    gallery: ["/images/project-highway.jpg", "/images/project-expressway.jpg", "/images/project-bridge.jpg"],
+    gallery: ["/images/project-highway.jpg", "/images/aboutMain.jpg", "/images/project-bridge.jpg"],
     facts: [
       { label: "Location", value: "India" },
       { label: "Status", value: "Executed" },
@@ -685,7 +685,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     overview:
       "A high-speed corridor package featuring structures, interchanges and intelligent road systems.",
     scope: ["High-speed corridor", "Interchanges & structures", "Intelligent transport systems", "Tolling readiness"],
-    gallery: ["/images/project-expressway.jpg", "/images/project-highway.jpg", "/images/project-bridge.jpg"],
+    gallery: ["/images/aboutMain.jpg", "/images/project-highway.jpg", "/images/project-bridge.jpg"],
     facts: [
       { label: "Location", value: "India" },
       { label: "Status", value: "Ongoing" },
@@ -702,7 +702,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     overview:
       "An orbital ring road with grade separators and service roads, easing congestion around a fast-growing coastal city.",
     scope: ["Orbital carriageway", "Grade separators & junctions", "Service roads & drainage", "Safety furniture & lighting"],
-    gallery: ["/images/hero-infrastructure.jpg", "/images/project-expressway.jpg", "/images/project-highway.jpg"],
+    gallery: ["/images/hero-infrastructure.jpg", "/images/aboutMain.jpg", "/images/project-highway.jpg"],
     facts: [
       { label: "Location", value: "India" },
       { label: "Status", value: "Ongoing" },
@@ -719,7 +719,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     overview:
       "An elevated mass-transit viaduct of precast segmental spans threading through a dense urban corridor — awarded and mobilising.",
     scope: ["Precast segmental spans", "Pile & pier foundations", "Station structures", "Erection by launching girder"],
-    gallery: ["/images/about-engineering.jpg", "/images/project-bridge.jpg", "/images/project-expressway.jpg"],
+    gallery: ["/images/about-engineering.jpg", "/images/project-bridge.jpg", "/images/aboutMain.jpg"],
     facts: [
       { label: "Location", value: "India" },
       { label: "Status", value: "Awarded" },
@@ -736,7 +736,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     overview:
       "A greenfield national-highway package with major structures, awarded and mobilising for execution to IRC/MoRTH standards.",
     scope: ["Greenfield carriageway", "Major & minor bridges", "Interchanges & culverts", "Road safety & ITS"],
-    gallery: ["/images/project-highway.jpg", "/images/project-expressway.jpg", "/images/project-bridge.jpg"],
+    gallery: ["/images/project-highway.jpg", "/images/aboutMain.jpg", "/images/project-bridge.jpg"],
     facts: [
       { label: "Location", value: "India" },
       { label: "Status", value: "Awarded" },

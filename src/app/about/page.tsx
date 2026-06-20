@@ -8,7 +8,7 @@ import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import PersonCard from "@/components/ui/PersonCard";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { aboutHighlights, chairmanAddress, company, media, stats, team } from "@/data/site";
+import { aboutHighlights, chairmanAddress, company, stats, team } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -27,7 +27,7 @@ export default function AboutPage() {
           </>
         }
         subtitle={`Since ${company.established}, we have engineered the roads, canals and bridges that connect India — and today we bring that same precision to crafting destinations that inspire it.`}
-        image={media.aboutImage}
+        image="/images/aboutMain.jpg"
       >
         <MagneticButton href="/projects">View our projects</MagneticButton>
       </PageHero>
@@ -37,7 +37,7 @@ export default function AboutPage() {
         <div className="container-x grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border [border-color:var(--ui-border-md)]">
-              <Image src={media.heroImage} alt="Sheeraj engineering" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
+              <Image src="/images/aboutMain.jpg" alt="Sheeraj engineering" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent" />
             </div>
           </Reveal>
