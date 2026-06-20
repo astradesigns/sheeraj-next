@@ -15,7 +15,7 @@ export default function Expansion() {
       <div className="container-x relative z-10">
         <HospHeading eyebrow={e.eyebrow} title={e.title} className="mb-16" onLight />
 
-        <div className="relative grid gap-10 md:grid-cols-4">
+        <div className="relative grid gap-10 md:grid-cols-2">
           {/* connector line */}
           <div className="pointer-events-none absolute left-0 top-6 hidden h-px w-full bg-gradient-to-r from-lagoon/20 via-lagoon/50 to-coral/40 md:block" />
 

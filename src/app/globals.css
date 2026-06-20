@@ -265,6 +265,20 @@
     border: 1px solid color-mix(in oklab, #ffffff 9%, transparent);
   }
 
+  /* Stronger blur for the scrolled navbar */
+  .glass-strong {
+    background: color-mix(in oklab, var(--color-panel) 96%, transparent);
+    backdrop-filter: blur(120px) saturate(200%) brightness(0.88);
+    -webkit-backdrop-filter: blur(120px) saturate(200%) brightness(0.88);
+    border-bottom: 1px solid color-mix(in oklab, #000000 16%, transparent);
+  }
+  html.dark .glass-strong {
+    background: color-mix(in oklab, var(--color-panel) 94%, transparent);
+    backdrop-filter: blur(120px) saturate(220%) brightness(0.72);
+    -webkit-backdrop-filter: blur(120px) saturate(220%) brightness(0.72);
+    border-bottom: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
+  }
+
   .hairline {
     height: 1px;
     width: 100%;

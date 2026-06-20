@@ -41,7 +41,7 @@ export const nav: NavItem[] = [
     children: [
       { label: "Partners", to: "/#partners", note: "Trusted network" },
       { label: "Rent Machinery", to: "/#rental", note: "Plant & fleet" },
-      { label: "ERP", to: "/erp", note: "Coming soon" },
+      { label: "ERP", to: "https://sppl.enway.org/index.php"},
     ],
   },
 ];
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     status: "Executed",
     year: "2025",
     blurb: "Balance four-laning works on the Mahuva–Kagavadar section of NH-8E.",
-    image: "/images/aboutMain.jpg",
+    image: "/images/mahuva/1.jpeg",
   },
 
   // ── Ongoing (3) ──
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     status: "Ongoing",
     year: "Mar 2026",
     blurb: "Remodeling of the augmentation canal main branch from Hamida Head to Picholia Head.",
-    image: "/images/project-canal.jpg",
+    image: "/images/karnal/1.jpeg",
   },
   {
     name: "KMP Link Elevated Road — Spur to Delhi–Mumbai Expressway",
@@ -337,12 +337,12 @@ export const hospitalityPage = {
   },
   vision: {
     eyebrow: "The Vision",
-    title: "We build the roads that connect India — and the shores that restore it.",
-    body: "Sheeraj is translating two decades of civil-engineering discipline into a new language: barefoot luxury. Our flagship island resort is engineered with the same rigour as a national highway, then dissolved into the landscape until only the experience remains.",
+    title: "We build places people dream of visiting — and never want to leave.",
+    body: "At Sheeraj, every resort is envisioned as more than a destination. It is a carefully curated experience where architecture, nature, and hospitality come together effortlessly.",
     points: [
-      "Designed around the tide, the reef and the prevailing breeze",
-      "Built to coastal-grade durability for every monsoon season",
-      "Crafted with island materials and island hands",
+      "Designed around nature, wellness, and relaxation",
+      "Created for timeless elegance and enduring value",
+      "Rooted in local character and global standards",
     ],
   },
   masterplan: {
@@ -351,7 +351,7 @@ export const hospitalityPage = {
     intro:
       "A low-density plan that touches the ground lightly — villas tucked into the treeline, suites floating over the lagoon, and a wild reef left exactly as we found it.",
     zones: [
-      { name: "Arrival Jetty", blurb: "A timber pier where the journey begins.", x: 20, y: 70, icon: "anchor" as IconName },
+      { name: "Arrival Jetty", blurb: "A timber pier where the journey begins.", x: 28, y: 28, icon: "anchor" as IconName },
       { name: "Beachfront Villas", blurb: "Sand-level suites under the palms.", x: 38, y: 52, icon: "palm" as IconName },
       { name: "Overwater Suites", blurb: "Decks suspended above the lagoon.", x: 62, y: 40, icon: "droplet" as IconName },
       { name: "Lagoon Infinity Pool", blurb: "Water that meets the horizon.", x: 50, y: 62, icon: "pool" as IconName },
@@ -362,27 +362,27 @@ export const hospitalityPage = {
   },
   architecture: {
     eyebrow: "Tropical Architecture",
-    title: "Structures that disappear into the landscape.",
+    title: "Building world-class resorts inspired by nature.",
     intro:
-      "Deep eaves, cross-ventilation and locally fired clay — climate-responsive design that needs less, lasts longer, and frames the view rather than blocking it.",
+      "Sheeraj specializes in the development and construction of premium hospitality destinations. From beachfront villas and overwater experiences to iconic arrival spaces, every project is designed to blend seamlessly with its surroundings while meeting the highest standards of quality and craftsmanship.",
     items: [
-      { title: "Beachfront Villas", blurb: "Private pools, sand-level living, palm-shaded decks.", image: "/images/exp-beach-villa.jpg" },
-      { title: "Overwater Decks", blurb: "Glass floors, direct lagoon access, sunrise alignment.", image: "/images/exp-overwater-deck.jpg" },
-      { title: "The Grand Arrival", blurb: "An open pavilion that breathes with the sea breeze.", image: "/images/resort-overwater.jpg" },
+      { title: "Luxury Resort Development", blurb: "End-to-end development of world-class hospitality destinations.", image: "/images/andaman/1.jpeg" },
+      { title: "Construction & Project Execution", blurb: "Delivering complex resort projects with precision, quality, and efficiency.", image: "/images/andaman/2.jpeg" },
+      { title: "Destination Infrastructure", blurb: "Creating the infrastructure that transforms locations into thriving destinations.", image: "/images/andaman/3.jpeg" },
     ],
   },
   sustainability: {
-    eyebrow: "Sustainable by Design",
-    title: "Luxury that gives more than it takes.",
+    eyebrow: "Sheeraj Difference",
+    title: "Building exceptional destinations through vision, precision, and craftsmanship.",
     intro:
-      "Every system is engineered to tread lightly on a fragile island ecosystem — because paradise is the asset we're protecting.",
+      "From concept to completion, Sheeraj develops hospitality projects that balance architectural elegance, construction excellence, and environmental responsibility—creating destinations designed to inspire for decades.",
     items: [
-      { title: "Solar-Ready Power", blurb: "Rooftop arrays and storage sized for off-grid resilience.", icon: "sun" as IconName },
-      { title: "Rainwater Harvesting", blurb: "Monsoon capture and greywater reuse across the estate.", icon: "droplet" as IconName },
-      { title: "Reef-Safe Construction", blurb: "Silt barriers and zero-discharge marine works.", icon: "fish" as IconName },
-      { title: "Local Craft & Materials", blurb: "Island timber, clay and stone, worked by island artisans.", icon: "leaf" as IconName },
-      { title: "Coastal-Grade Resilience", blurb: "Structures rated for cyclone and salt for decades.", icon: "shield" as IconName },
-      { title: "Low-Impact Footprint", blurb: "Under 18% built area; the rest left wild.", icon: "palm" as IconName },
+      { title: "Strategic Planning", blurb: "Every development begins with detailed planning and feasibility analysis.", icon: "landmark" as IconName },
+      { title: "Quality Construction", blurb: "Premium materials, skilled execution, and uncompromising standards.", icon: "crane" as IconName },
+      { title: "Sustainable Practices", blurb: "Responsible development that respects natural surroundings.", icon: "leaf" as IconName },
+      { title: "Local Integration", blurb: "Projects designed to celebrate regional culture and craftsmanship.", icon: "flower" as IconName },
+      { title: "Coastal Expertise", blurb: "Specialized solutions for beachfront and island environments.", icon: "wave" as IconName },
+      { title: "Enduring Value", blurb: "Developments built to remain relevant, resilient, and desirable over time.", icon: "shield" as IconName },
     ],
   },
   amenities: {
@@ -410,13 +410,11 @@ export const hospitalityPage = {
     ],
   },
   expansion: {
-    eyebrow: "Future Expansion",
-    title: "A horizon that keeps growing.",
+    eyebrow: "Andaman Projects",
+    title: "Our projects in Andaman & Nicobar Islands.",
     phases: [
-      { year: "2024", title: "Groundbreaking", body: "Site mobilisation and foundation works begin on the flagship island." },
-      { year: "2026", title: "Phase I Opening", body: "Beachfront villas, the lagoon pool and the arrival pavilion welcome first guests." },
-      { year: "2028", title: "Overwater & Wellness", body: "Overwater suites and the forest spa extend the estate across the lagoon." },
-      { year: "2030", title: "Island Network", body: "A second island and marine sanctuary join the Sheeraj hospitality collection." },
+      { year: "₹175 CR", title: "Eco-Tourism Resort, Shaheed Dweep Island", body: "Development of 5-Star Eco-Tourism Resort at Shaheed Dweep Island, ANI on PPP basis. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 75 Yrs (Incl. Construction Period)." },
+      { year: "₹160 CR", title: "Megapode Resort, Sri Vijaya Puram", body: "Design, Build, Finance, Operate and Transfer (DBFOT) of Megapode Resort at Sri Vijaya Puram. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 50 Yrs (Incl. Construction Period)." },
     ],
   },
   gallery: [
@@ -432,12 +430,12 @@ export const hospitalityPage = {
   investment: {
     eyebrow: "Investment Opportunity",
     title: "Own a stake in the islands' future.",
-    body: "A rare opportunity to invest in India's emerging luxury-island market, backed by an EPC builder with a fifteen-year delivery record. Branded residences and equity participation available for Phase I.",
+    body: "Two government-awarded projects in one of India's most coveted island destinations — backed by Sheeraj's two-decade EPC track record. Both developments operate under long-term concession frameworks with ANIIDCO, giving investors a rare combination of sovereign backing, operational upside, and enduring asset value.",
     stats: [
-      { value: 40, suffix: " acres", label: "Flagship island estate" },
-      { value: 120, suffix: " keys", label: "Villas & overwater suites" },
-      { value: 18, suffix: "%", label: "Maximum built footprint" },
-      { value: 2026, suffix: "", label: "Phase I opening" },
+      { value: 335, suffix: " CR", label: "Combined project value" },
+      { value: 75, suffix: " Yrs", label: "Max concession period" },
+      { value: 2, suffix: "", label: "Government-awarded projects" },
+      { value: 3, suffix: " Yrs", label: "Time to first revenue" },
     ],
   },
 };
@@ -468,16 +466,16 @@ export const team = {
       "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline.",
   } as Person,
   directors: [
-    { name: "Mr. Rahul Singh Gulia", role: "Director", photo: "/images/boardMember/rahulSir.png", message: "Our fleet and field teams turn drawings into roads, season after season, without ever cutting a corner." },
-    { name: "Mr. Pavitra Kumar", role: "Director", photo: "/images/boardMember/pavitraSir.png", message: "On the islands we build experiences as carefully as we have always built bridges." },
-    { name: "Mr. Arpit Kadyan", role: "Director", photo: "/images/boardMember/arpitSir.png", message: "Precision is a culture here. It lives in the way we plan, pour and finish every structure." },
+    { name: "Mr. Rahul Singh Gulia", role: "Director", photo: "/images/boardMember/rahulSir.png", message: "Our focus remains on maintaining the highest standards of professionalism, safety, and customer satisfaction. Every project we undertake reflects our dedication to quality and trust." },
+    { name: "Mr. Pavitra Kumar", role: "Director", photo: "/images/boardMember/pavitraSir.png", message: "We believe that sustainable growth is achieved through strong partnerships, skilled teams, and continuous improvement. Together, we are shaping a future built on reliability and excellence." },
+    { name: "Mr. Arpit Kadyan", role: "Director", photo: "/images/boardMember/arpitSir.png", message: "Innovation, integrity, and commitment are the cornerstones of our success. We remain dedicated to delivering projects that exceed expectations and create long-term value." },
   ] as Person[],
   ca: {
     name: "Mr. Alok Bishnoi",
     role: "Chartered Accountant",
     photo: "/images/project-government.jpg",
     message:
-      "Disciplined finance is the foundation beneath every structure we deliver — transparent, audited, and built for the long term.",
+      "Financial discipline, transparency, and accountability are integral to our operations. We are committed to maintaining strong financial practices that support sustainable growth and stakeholder confidence.",
   } as Person,
 };
 
@@ -515,15 +513,15 @@ export const chairmanMessage = {
 export const serviceDetail: Record<string, { points: string[]; image: string }> = {
   highways: {
     points: ["NH & SH packages, service roads and high-speed corridors", "Flexible & rigid pavements to IRC standards", "Drainage, safety furniture and intelligent road systems"],
-    image: "/images/project-highway.jpg",
+    image: "/images/services/1.jpg",
   },
   "ring-roads": {
     points: ["Orbital corridors & city bypasses", "Grade separators and interchanges", "Congestion relief for growing regions"],
-    image: "/images/aboutMain.jpg",
+    image: "/images/services/2.jpg",
   },
   canals: {
     points: ["Lined main canals & distributary networks", "Cross-drainage and regulating structures", "Assured irrigation across thousands of hectares"],
-    image: "/images/project-canal.jpg",
+    image: "/images/services/3.jpg",
   },
   government: {
     points: ["Turnkey EPC delivery for public authorities", "Civic and public-works infrastructure", "On-time, to-spec, fully audited"],
@@ -535,7 +533,7 @@ export const serviceDetail: Record<string, { points: string[]; image: string }> 
   },
   hospitality: {
     points: ["Beachfront & overwater resort construction", "Tropical, climate-responsive architecture", "Coastal-grade, sustainable building systems"],
-    image: "/images/resort-overwater.jpg",
+    image: "/images/services/6.jpeg",
   },
 };
 
@@ -562,6 +560,78 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "four-laning-of-nh-8e-mahuva-kagavadar-package-iii": {
+    officialName:
+      "Construction of left out work of four laning of Mahuva To Kagavadar Section of NH-8E from KM 100.100 To KM 139.915 (Design Chainage from KM 100.450 To KM 140.470) (Package-III)",
+    client: "National Highways Authority of India (NHAI)",
+    value: "₹514.00 Cr",
+    stretch: "KM 100.100 to KM 139.915 — Mahuva to Kagavadar",
+    overview:
+      "Executed for the National Highways Authority of India, this package covers the left-out balance works of the four-laning of NH-8E between Mahuva and Kagavadar in Gujarat. The scope spans a 39.8 km highway reach (design chainage KM 100.450 to KM 140.470) and delivers a four-lane divided carriageway with service roads, major and minor structures, cross-drainage and all road safety systems to NHAI/MoRTH standards — completing the last mile of a nationally significant corridor.",
+    scope: [
+      "Four-lane divided carriageway over 39.8 km",
+      "Service roads and drainage infrastructure",
+      "Major and minor bridges and culverts",
+      "Pavement design and construction to MoRTH specs",
+      "Road furniture, signage, lighting and safety barriers",
+      "Quality assurance and NHAI third-party inspection compliance",
+    ],
+    gallery: [
+      "/images/mahuva/2.jpeg",
+      "/images/mahuva/3.jpeg",
+      "/images/mahuva/4.jpeg",
+      "/images/mahuva/5.jpeg",
+      "/images/mahuva/6.jpeg",
+    ],
+    facts: [
+      { label: "State", value: "Gujarat" },
+      { label: "Highway", value: "NH-8E" },
+      { label: "Project Value", value: "₹514.00 Cr" },
+      { label: "Completion", value: "2025" },
+    ],
+    timeline: [
+      { phase: "Earthwork", label: "Formation & embankment" },
+      { phase: "Structures", label: "Bridges, culverts & drainage" },
+      { phase: "Surfacing", label: "Pavement & road furniture" },
+      { phase: "Handover", label: "Safety audit & commissioning" },
+    ],
+  },
+  "remodeling-of-wjc-augmentation-canal-nabard-ridf-xxv": {
+    officialName:
+      "Remodeling of augmentation canal from RD 0KM to KM 75.25KM i.e. From Hamida Head to Picholia Head (Merging point with WJC Main Branch) main branch under NABARD RIDF XXV",
+    client: "Haryana Irrigation & Water Resources Department",
+    value: "₹928.34 Cr",
+    stretch: "RD 0KM to KM 75.25KM — Hamida Head to Picholia Head",
+    overview:
+      "Commissioned under NABARD's Rural Infrastructure Development Fund (RIDF XXV), this project remodels 75.25 km of the WJC Augmentation Canal main branch from Hamida Head to Picholia Head — the merging point with the WJC Main Branch — in Haryana. The works involve full-length concrete lining, hydraulic restructuring, and replacement of aging cross-drainage and regulating structures to restore the canal's design discharge capacity and extend assured irrigation to thousands of hectares of farmland across the region.",
+    scope: [
+      "Full-length concrete lining over 75.25 km canal reach",
+      "Hydraulic remodeling to restore design discharge capacity",
+      "Replacement of cross-drainage works and regulators",
+      "De-silting, earthwork and slope protection",
+      "Canal road and inspection path reinstatement",
+      "Quality control and supervision to CWC / NABARD norms",
+    ],
+    gallery: [
+      "/images/karnal/2.jpeg",
+      "/images/karnal/3.jpeg",
+      "/images/karnal/4.jpeg",
+      "/images/karnal/5.jpeg",
+      "/images/karnal/6.jpeg",
+    ],
+    facts: [
+      { label: "State", value: "Haryana" },
+      { label: "Project Cost", value: "₹928.34 Cr" },
+      { label: "Work Executed", value: "₹816.23 Cr" },
+      { label: "Completion", value: "Mar 2026" },
+    ],
+    timeline: [
+      { phase: "Mobilisation", label: "Survey, de-silting & earthwork" },
+      { phase: "Structures", label: "Cross-drainage & regulators" },
+      { phase: "Lining", label: "Concrete lining & slope protection" },
+      { phase: "Commissioning", label: "Hydraulic testing & handover" },
+    ],
+  },
   "jaipur-ring-road-nh-148c-two-interchanges": {
     officialName:
       "Construction of Balance Works of Two Number of Interchanges at Jaipur Ring Road (NH-148C) from Tonk Road (NH-52) to Ajmer Road Section (NH-48), Rajasthan — National Highway Authority of India",

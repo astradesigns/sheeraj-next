@@ -88,7 +88,7 @@ export default function Investment() {
                 deck and arrange a private walkthrough of the masterplan.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-foam/80">
-                {["Equity & branded-residence options", "EPC builder with a 15-year record", "Phase I opening 2026"].map((t) => (
+                {["Government-awarded under ANIIDCO", "Long concession periods up to 75 years", "Proven EPC builder with a 20-year record"].map((t) => (
                   <li key={t} className="flex items-center gap-3">
                     <span className="h-px w-6 bg-aqua/70" />
                     {t}

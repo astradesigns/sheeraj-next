@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import Logo from "@/components/ui/Logo";
@@ -16,6 +16,7 @@ export default function Navbar() {
   const [openDrop, setOpenDrop] = useState<string | null>(null);
 
   const pathname = usePathname();
+  const router = useRouter();
   // The transparent header overlays a full-bleed (now tinted) media hero on these
   // routes — use media-adaptive text there until the glass header kicks in on scroll.
   const overHero = !scrolled && (pathname === "/" || pathname === "/hospitality");
@@ -40,8 +41,23 @@ export default function Navbar() {
     e.preventDefault();
     setOpen(false);
     setOpenDrop(null);
-    scrollToTarget(to);
+    if (pathname === "/") {
+      scrollToTarget(to);
+    } else {
+      sessionStorage.setItem("scrollTarget", to);
+      router.push("/");
+    }
   };
+
+  // After navigating to home, scroll to the stored section once Lenis is ready.
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const target = sessionStorage.getItem("scrollTarget");
+    if (!target) return;
+    sessionStorage.removeItem("scrollTarget");
+    const timer = setTimeout(() => scrollToTarget(target), 600);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   // A nav route is active when the current path matches it — or is nested
   // beneath it, so /projects/[slug] still lights up the "Projects" tab.
@@ -97,7 +113,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "glass py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]" : "py-5"
+          scrolled ? "glass-strong py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]" : "py-5"
         }`}
       >
         <nav className="container-x flex items-center justify-between">

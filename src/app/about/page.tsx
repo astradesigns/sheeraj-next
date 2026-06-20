@@ -161,7 +161,7 @@ export default function AboutPage() {
                 role: "Managing Director",
                 photo: "/images/boardMember/ankitSir.png",
                 message:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — a placeholder message to be replaced with Ankit Pannu’s own words.",
+                  "At Sheeraj Projects, our commitment is to deliver excellence through quality construction, innovation, and timely project execution. We strive to build lasting value for our clients while contributing to the growth of modern infrastructure.",
               }}
               featured
               size="md"

@@ -6,10 +6,8 @@ import Vision from "@/components/hospitality/Vision";
 import Masterplan from "@/components/hospitality/Masterplan";
 import Architecture from "@/components/hospitality/Architecture";
 import Sustainability from "@/components/hospitality/Sustainability";
-import Amenities from "@/components/hospitality/Amenities";
 import ResortBuild from "@/components/hospitality/ResortBuild";
 import Expansion from "@/components/hospitality/Expansion";
-import Gallery from "@/components/hospitality/Gallery";
 import Investment from "@/components/hospitality/Investment";
 
 export const metadata: Metadata = {
@@ -25,10 +23,8 @@ export default function HospitalityPage() {
       <Masterplan />
       <Architecture />
       <Sustainability />
-      <Amenities />
       <ResortBuild />
       <Expansion />
-      <Gallery />
       <Investment />
     </>
   );
