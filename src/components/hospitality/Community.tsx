@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import HospHeading from "./HospHeading";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
@@ -10,27 +8,9 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { LeafCluster, PalmFrond, Hibiscus } from "./tropical";
 import { hospitalityPage } from "@/data/site";
 
-/* ----------------------------------------------------------------------------
-   Marker positions as PERCENTAGES of the master-plan image (community.plan.image),
-   index-matched to community.plan.zones. Markers show ONLY their number; the
-   legend maps number → name. Nudge a value to move a pin over its feature.
----------------------------------------------------------------------------- */
-const PINS: { x: number; y: number }[] = [
-  { x: 14, y: 10 }, // 1 — Arrival + Lobby
-  { x: 42, y: 8 }, //  2 — All-Day Dining
-  { x: 31, y: 21 }, // 3 — Pool / Cabana Pavilion
-  { x: 60, y: 24 }, // 4 — Garden Villas
-  { x: 25, y: 36 }, // 5 — Lagoon Villas
-  { x: 10, y: 53 }, // 6 — Sea View Villas
-  { x: 73, y: 33 }, // 7 — Presidential Villa
-  { x: 66, y: 11 }, // 8 — Spa / Wellness
-];
-
 export default function Community() {
   const c = hospitalityPage.community;
   const zones = c.plan.zones;
-  const [active, setActive] = useState(0);
-  const reduce = useReducedMotion();
 
   return (
     <section
@@ -163,92 +143,52 @@ export default function Community() {
           <HospHeading eyebrow={c.plan.eyebrow} title={c.plan.title} align="center" className="mb-12" />
 
           <Reveal>
-            <div className="grid items-start gap-8 rounded-[2rem] border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] md:p-8 lg:grid-cols-[1.5fr_0.5fr]">
-              {/* the plan — real render with number-only markers (names in legend) */}
-              <div
-                className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-ocean-deep"
-                style={{ aspectRatio: `${c.plan.image.width} / ${c.plan.image.height}` }}
-              >
-                <Image
-                  src={c.plan.image}
-                  alt="Master plan render of the 20-acre gated villa community"
-                  fill
-                  sizes="(max-width:1024px) 100vw, 60vw"
-                  className="object-cover"
+            <div className="grid items-stretch gap-6 rounded-4xl border border-white/10 bg-white/3 p-5 backdrop-blur-xl shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] md:gap-8 md:p-8 lg:grid-cols-[1.55fr_1fr]">
+              {/* the plan — cinematic looping fly-through, fills its column */}
+              <div className="group relative min-h-64 overflow-hidden rounded-3xl border border-white/10 bg-ocean-deep lg:min-h-full">
+                <video
+                  src="/videos/community.mp4"
+                  poster={c.plan.image.src}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label="Aerial fly-through of the 20-acre gated villa community master plan"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                 />
-
-                {PINS.map((p, i) => {
-                  const on = active === i;
-                  return (
-                    <button
-                      key={i}
-                      type="button"
-                      onMouseEnter={() => setActive(i)}
-                      onFocus={() => setActive(i)}
-                      onClick={() => setActive(i)}
-                      aria-label={`${i + 1}. ${zones[i]}`}
-                      aria-pressed={on}
-                      className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
-                      style={{ left: `${p.x}%`, top: `${p.y}%` }}
-                    >
-                      {on && !reduce && (
-                        <motion.span
-                          aria-hidden
-                          className="absolute inset-0 rounded-full border border-aqua"
-                          initial={{ opacity: 0.7, scale: 1 }}
-                          animate={{ opacity: [0.7, 0, 0.7], scale: [1, 2.2, 1] }}
-                          transition={{ duration: 2.2, repeat: Infinity, ease: "easeOut" }}
-                        />
-                      )}
-                      <span
-                        className={`flex items-center justify-center rounded-full border font-display font-semibold shadow-[0_4px_14px_rgba(0,0,0,0.5)] transition-all duration-300 ${
-                          on
-                            ? "h-8 w-8 border-foam bg-aqua text-sm text-[#06262f]"
-                            : "h-7 w-7 border-aqua bg-[#06262f]/85 text-xs text-aqua hover:bg-[#06262f]"
-                        }`}
-                      >
-                        {i + 1}
-                      </span>
-                    </button>
-                  );
-                })}
+                {/* depth grade + inner ring so the frame reads as premium media */}
+                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ocean-deep/75 via-transparent to-ocean-deep/10" />
+                <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-aqua/15" />
+                {/* floating caption tag, echoing the aerial image above */}
+                <div className="absolute bottom-4 left-4 rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-xl">
+                  <div className="font-display text-[0.6rem] uppercase tracking-[0.2em] text-foam/70">
+                    {c.plan.eyebrow}
+                  </div>
+                  <div className="mt-0.5 font-serif text-lg text-foam">{c.plan.title}</div>
+                </div>
               </div>
 
-              {/* legend / readout */}
-              <div>
+              {/* legend — zone labels, clean and un-numbered */}
+              <div className="flex flex-col justify-center">
                 <div className="font-display text-[0.7rem] uppercase tracking-[0.22em] text-aqua/70">
-                  Zone {String(active + 1).padStart(2, "0")} / {String(zones.length).padStart(2, "0")}
+                  Master Plan Zones
                 </div>
-                <h4 className="mt-1 font-serif text-2xl text-foam">{zones[active]}</h4>
+                <h4 className="mt-1 font-serif text-2xl text-foam">{zones.length} curated zones</h4>
 
-                <div className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-1">
-                  {zones.map((z, i) => {
-                    const on = active === i;
-                    return (
-                      <button
-                        key={z}
-                        type="button"
-                        onMouseEnter={() => setActive(i)}
-                        onFocus={() => setActive(i)}
-                        onClick={() => setActive(i)}
-                        aria-pressed={on}
-                        className={`flex items-center gap-3 rounded-xl border px-3.5 py-2.5 text-left text-sm transition-all ${
-                          on
-                            ? "border-aqua/50 bg-aqua/10 text-foam"
-                            : "border-white/10 text-foam/70 hover:border-aqua/30 hover:text-foam"
-                        }`}
-                      >
-                        <span
-                          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold transition-colors ${
-                            on ? "bg-aqua text-[#06262f]" : "bg-white/10 text-foam/70"
-                          }`}
-                        >
-                          {i + 1}
-                        </span>
-                        <span className="leading-tight">{z}</span>
-                      </button>
-                    );
-                  })}
+                <div className="mt-5 grid grid-cols-2 gap-2.5 lg:grid-cols-1">
+                  {zones.map((z) => (
+                    <div
+                      key={z}
+                      className="group/zone flex items-center gap-3 rounded-xl border border-white/10 bg-white/2 px-3.5 py-2.5 text-left text-sm text-foam/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua/40 hover:bg-aqua/8 hover:text-foam"
+                    >
+                      <span
+                        aria-hidden
+                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua/70 transition-all duration-300 group-hover/zone:scale-150 group-hover/zone:bg-aqua"
+                      />
+                      <span className="leading-tight">{z}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
