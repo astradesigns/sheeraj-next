@@ -227,8 +227,8 @@ export const projects: Project[] = [
     location: "Haryana",
     status: "Ongoing",
     year: "Jun 2026",
-    blurb: "Elevated road with service roads forming the KMP link spur to the Delhi–Mumbai Expressway.",
-    image: "/images/hero-infrastructure.jpg",
+    blurb: "Construction of elevated road with service road from Delhi–Agra NH-19 to DND–Faridabad–Ballabhgarh bypass KMP link (spur to Delhi–Mumbai Expressway) via Ballabhgarh–Mohna Road. ₹163.00 Cr for the Public Works Department.",
+    image: "/images/faridabad/2.jpg",
   },
   {
     name: "Jaipur Ring Road (NH-148C) — Two Interchanges",
@@ -898,6 +898,42 @@ export const projectDetails: Record<string, ProjectDetail> = {
       { phase: "Earthwork", label: "Widening, formation & sub-grade" },
       { phase: "Pavement", label: "Reconstruction & strengthening" },
       { phase: "Surfacing", label: "Furniture, drainage & handover" },
+    ],
+  },
+  "kmp-link-elevated-road-spur-to-delhi-mumbai-expressway": {
+    officialName:
+      "Construction of Elevated Road with Service Road, from Delhi–Agra NH-19 to DND–Faridabad–Ballabhgarh Bypass (KMP Link) — Spur to Delhi–Mumbai Expressway — via Ballabhgarh–Mohna Road",
+    client: "Public Works Department, Haryana",
+    value: "₹163.00 Cr",
+    stretch: "Delhi–Agra NH-19 to DND–Faridabad–Ballabhgarh Bypass, via Ballabhgarh–Mohna Road",
+    overview:
+      "Commissioned by the Public Works Department of Haryana, this package delivers an elevated road with a parallel service road linking Delhi–Agra NH-19 to the DND–Faridabad–Ballabhgarh bypass — the KMP link that forms a spur to the Delhi–Mumbai Expressway — routed via the Ballabhgarh–Mohna Road. The ₹163.00 crore corridor lifts long-distance through-traffic clear of Faridabad and Ballabhgarh's congested local network, knitting the region's arterial highways into the national expressway grid while a ground-level service road preserves access for local movement.",
+    scope: [
+      "Elevated carriageway from Delhi–Agra NH-19 to the DND–Faridabad–Ballabhgarh bypass",
+      "Parallel service road for uninterrupted local access",
+      "Spur connectivity to the Delhi–Mumbai Expressway via the KMP link",
+      "Piers, pier caps, foundations and superstructure for the viaduct",
+      "Drainage, road furniture, signage, lighting and safety barriers",
+      "Construction to IRC / MoRTH specifications",
+    ],
+    gallery: [
+      "/images/faridabad/1.jpg",
+      "/images/faridabad/3.jpg",
+      "/images/faridabad/4.jpg",
+      "/images/faridabad/5.jpg",
+      "/images/faridabad/6.jpg",
+    ],
+    facts: [
+      { label: "State", value: "Haryana" },
+      { label: "Authority", value: "Public Works Department" },
+      { label: "Project Value", value: "₹163.00 Cr" },
+      { label: "Target Completion", value: "June 2026" },
+    ],
+    timeline: [
+      { phase: "Mobilise", label: "Survey, casting yard & setting out" },
+      { phase: "Substructure", label: "Piles, foundations & pier caps" },
+      { phase: "Superstructure", label: "Girders, deck & service road" },
+      { phase: "Surfacing", label: "Pavement, furniture & handover" },
     ],
   },
   "andaman-island-resort": {
