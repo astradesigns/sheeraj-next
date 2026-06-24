@@ -73,7 +73,7 @@ export default function ProjectsExplorer() {
                     <span className="text-[0.7rem] uppercase tracking-[0.2em] text-accent-gold-strong">{p.category}</span>
                     <StatusPill status={p.status} />
                   </div>
-                  <h3 className="mt-3 font-serif text-2xl tracking-tight">{p.name}</h3>
+                  <h3 className="mt-3 font-serif text-sm lg:text-[15px] xl:text-2xl tracking-tight">{p.name}</h3>
                   <div className="mt-2 flex items-center gap-3 text-xs text-mist">
                     <span>{p.location}</span>
                     <span className="h-1 w-1 rounded-full bg-mist/50" />

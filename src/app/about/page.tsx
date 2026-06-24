@@ -103,7 +103,7 @@ export default function AboutPage() {
                   </div>
                   <div className="mt-4">
                     <span className="eyebrow">{team.chairman.role}</span>
-                    <h3 className="mt-2 font-serif text-2xl tracking-tight md:text-3xl">
+                    <h3 className="mt-2 font-serif tracking-tight text-xl md:text-sm lg:text-lg xl:text-xl">
                       {team.chairman.name}
                     </h3>
                     <div className="mt-4 h-px w-14 bg-linear-to-r from-gold to-transparent" />
@@ -177,7 +177,7 @@ export default function AboutPage() {
 
           {/* CA — continues the alternation: image on the right, shorter (compact) card */}
           <Reveal className="mt-6">
-            <PersonCard person={team.ca} featured size="sm" />
+            <PersonCard person={team.ca} featured size="md" />
           </Reveal>
         </div>
       </section>

@@ -101,8 +101,8 @@ function ProjectCard({ p, aspect, sizes, compact = false }: { p: Project; aspect
         <h3
           className={`font-serif tracking-tight ${
             compact
-              ? "mt-2.5 text-xl md:text-2xl lg:mt-1.5 lg:text-sm xl:mt-2.5 xl:text-2xl"
-              : "mt-2.5 text-xl md:text-2xl"
+              ? "mt-2.5 text-sm lg:mt-1.5 lg:text-[15px] xl:mt-2.5 xl:text-2xl"
+              : "mt-2.5 text-sm lg:text-[15px] xl:text-2xl"
           }`}
         >
           {p.name}
