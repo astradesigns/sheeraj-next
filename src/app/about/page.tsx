@@ -61,8 +61,8 @@ export default function AboutPage() {
             </ul>
             <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border [border-color:var(--ui-border)] [background-color:var(--ui-surface-sm)] sm:grid-cols-4 lg:mt-10">
               {stats.map((s) => (
-                <div key={s.label} className="px-5 py-6 [background-color:var(--ui-surface-xs)]">
-                  <div className="font-serif text-3xl text-gold-gradient">
+                <div key={s.label} className="px-4 py-5 sm:px-5 sm:py-6 lg:px-3 lg:py-5 xl:px-4 xl:py-6 2xl:px-5 bg-(--ui-surface-xs)">
+                  <div className="font-serif text-2xl text-gold-gradient sm:text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl">
                     <Counter value={s.value} suffix={s.suffix} />
                   </div>
                   <div className="mt-2 text-[0.72rem] uppercase leading-snug tracking-wider text-mist">{s.label}</div>
