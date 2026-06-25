@@ -24,10 +24,10 @@ export default function ContactPage() {
         <div className="container-x grid gap-8 sm:gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
           {/* details */}
           <div className="space-y-6 sm:space-y-8">
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid items-stretch gap-5 sm:grid-cols-2">
               {contact.offices.map((o) => (
-                <Reveal key={o.label}>
-                  <div className="glass rounded-2xl p-5">
+                <Reveal key={o.label} className="h-full">
+                  <div className="glass h-full rounded-2xl p-5">
                     <div className="text-[0.7rem] uppercase tracking-wider text-gold">{o.label}</div>
                     <div className="mt-2 text-sm text-silver">{o.value}</div>
                   </div>

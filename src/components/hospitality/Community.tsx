@@ -177,15 +177,17 @@ export default function Community() {
                 <h4 className="mt-1 font-serif text-2xl text-foam">{zones.length} curated zones</h4>
 
                 <div className="mt-5 grid grid-cols-2 gap-2.5 lg:grid-cols-1">
-                  {zones.map((z) => (
+                  {zones.map((z, i) => (
                     <div
                       key={z}
                       className="group/zone flex items-center gap-3 rounded-xl border border-white/10 bg-white/2 px-3.5 py-2.5 text-left text-sm text-foam/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua/40 hover:bg-aqua/8 hover:text-foam"
                     >
                       <span
                         aria-hidden
-                        className="h-1.5 w-1.5 shrink-0 rounded-full bg-aqua/70 transition-all duration-300 group-hover/zone:scale-150 group-hover/zone:bg-aqua"
-                      />
+                        className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-aqua/15 text-[0.65rem] font-semibold text-aqua transition-all duration-300 group-hover/zone:bg-aqua group-hover/zone:text-ocean-deep"
+                      >
+                        {i + 1}
+                      </span>
                       <span className="leading-tight">{z}</span>
                     </div>
                   ))}
