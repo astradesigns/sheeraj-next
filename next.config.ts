@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  experimental: {
+    // Filesystem cache panics on some pages (hospitality) in v16.2.x — disable for dev.
+    turbopackFileSystemCacheForDev: false,
+  },
 };
 
 export default nextConfig;
