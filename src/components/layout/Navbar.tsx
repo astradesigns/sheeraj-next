@@ -95,6 +95,13 @@ export default function Navbar() {
         )}
       </>
     );
+    if (item.href) {
+      return (
+        <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className={base}>
+          {label}
+        </a>
+      );
+    }
     if (item.to?.startsWith("/#")) {
       return (
         <a key={item.label} href={item.to} className={base} onClick={(e) => handleHash(e, item.to!)}>
@@ -170,7 +177,18 @@ export default function Navbar() {
                         className="glass absolute left-1/2 top-full mt-4 w-60 -translate-x-1/2 rounded-2xl p-2"
                       >
                         {item.children.map((c) =>
-                          c.to?.startsWith("/#") ? (
+                          c.href ? (
+                            <a
+                              key={c.label}
+                              href={c.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group flex items-center justify-between rounded-xl px-4 py-3 transition-colors hover:bg-(--ui-surface-xs)"
+                            >
+                              <span className="text-sm text-silver group-hover:text-gold">{c.label}</span>
+                              <span className="text-[0.65rem] text-mist">{c.note}</span>
+                            </a>
+                          ) : c.to?.startsWith("/#") ? (
                             <a
                               key={c.label}
                               href={c.to}

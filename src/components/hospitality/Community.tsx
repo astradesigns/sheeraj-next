@@ -62,7 +62,7 @@ export default function Community() {
               {/* floating area tag */}
               <div className="absolute bottom-5 left-5 rounded-2xl border border-white/15 bg-white/10 px-5 py-3 backdrop-blur-xl transition-transform duration-500 group-hover:-translate-y-1">
                 <div className="font-serif text-2xl text-foam">
-                  20<span className="ml-0.5 text-[1rem] text-aqua">acres</span>
+                  Shaheed Dweep
                 </div>
                 <div className="mt-0.5 text-[0.66rem] uppercase tracking-[0.18em] text-foam/70">
                   Gated villa community

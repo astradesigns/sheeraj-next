@@ -1,4 +1,4 @@
-// ============================================================================
+﻿// ============================================================================
 //  SHEERAJ PROJECTS — SITE CONTENT (typed)
 //  Ported from the live site + extended for the cinematic rebuild.
 //  Swap copy / numbers / image paths freely. Images live in /public/images.
@@ -7,9 +7,9 @@
 // Static image imports — Next hashes the file CONTENTS, so replacing the file
 // busts the cache automatically (no stale optimized copy). Prefer this over a
 // bare "/images/..." string for any image you expect to swap out.
-import andaman1 from "../../public/images/andaman/1.jpeg";
-import andaman2 from "../../public/images/andaman/2.jpeg";
-import andaman3 from "../../public/images/andaman/3.jpeg";
+import andaman1 from "../../public/images/1.jpeg";
+import andaman2 from "../../public/images/2.jpeg";
+import andaman3 from "../../public/images/3.jpeg";
 import andaman5 from "../../public/images/andaman/5.png";
 import andamanVision from "../../public/images/andaman/vision.jpg";
 
@@ -56,6 +56,7 @@ export const nav: NavItem[] = [
       { label: "Partners", to: "/#partners", note: "Trusted network" },
       { label: "Rent Machinery", to: "/#rental", note: "Plant & fleet" },
       { label: "ERP", to: "https://sppl.enway.org/index.php"},
+      { label: "Form 5A", href: "/Form 5A.pdf", external: true, note: "Download PDF" },
     ],
   },
 ];
@@ -592,6 +593,7 @@ export type Person = {
   role: string;
   photo: string;
   message: string;
+  qualification?: string;
 };
 
 export const team = {
@@ -610,23 +612,23 @@ export const team = {
       "We treat every project as infrastructure for the next generation — engineered to a standard, never just a deadline.",
   } as Person,
   directors: [
-    { name: "Mr. Rahul Singh Gulia", role: "Director", photo: "/images/boardMember/rahulSir.png", message: "Our focus remains on maintaining the highest standards of professionalism, safety, and customer satisfaction. Every project we undertake reflects our dedication to quality and trust." },
-    { name: "Mr. Pavitra Kumar", role: "Director", photo: "/images/boardMember/pavitraSir.png", message: "We believe that sustainable growth is achieved through strong partnerships, skilled teams, and continuous improvement. Together, we are shaping a future built on reliability and excellence." },
-    { name: "Mr. Arpit Kadyan", role: "Director", photo: "/images/boardMember/arpitSir.png", message: "Innovation, integrity, and commitment are the cornerstones of our success. We remain dedicated to delivering projects that exceed expectations and create long-term value." },
+    { name: "Mr. Rahul Singh Gulia", role: "Director", qualification: "MBA", photo: "/images/boardMember/rahulSir.png", message: "True business leadership is about far more than results—it is about building trust, empowering people, and making decisions that create lasting value. We lead with purpose, integrity, and the courage to embrace change. At our core lies a strong management-systems philosophy: robust processes, defined standards, and continuous improvement that turn vision into consistent, measurable outcomes. By aligning innovation with disciplined execution and a dedicated team, we transform every opportunity into enduring success. Guided by clear values and uncompromising quality, we are not just building a business—we are engineering a future of sustainable, meaningful impact." },
+    { name: "Mr. Pavitra Kumar", role: "Director", qualification: "M.Ed., MBA", photo: "/images/boardMember/pavitraSir.png", message: `Every achievement stands on one foundation—dedication, perseverance, and the relentless pursuit of excellence. Every milestone tells a story. A story of passion. A story of determination. A story written, day after day, by a team that refuses to settle. We do not fear challenges—we transform them. Through unwavering effort, we build value that lasts and a standard that endures. "Hard work is talent’s only true rival—and its greatest ally" And this is only the beginning.` },
+    { name: "Mr. Arpit Kadyan", role: "Director", qualification: "LLB", photo: "/images/boardMember/arpitSir.png", message: "Integrity is the cornerstone of everything we do. Compliance, to us, is far more than an obligation—it is a reflection of our values. We conduct our business with transparency, accountability, and unwavering adherence to every legal and ethical principle. True leadership lies in doing what is right, even when no one is watching. By upholding the highest standards of governance, we earn the trust of our clients, partners, and communities. This is how we operate responsibly, build an enduring reputation, and create lasting value for all." },
   ] as Person[],
   coo: {
     name: "Mr. Dilbagh Singh Dhandha",
     role: "Chief Operating Officer",
-    photo: "/images/boardMember/accounts.jpg",
+    photo: "/images/boardMember/dhandhaSir.jpg",
     message:
-      "Operational excellence is the foundation of every successful project. We are committed to streamlining processes, empowering teams, and delivering results that reflect the highest standards of efficiency and integrity.",
+      "Efficient and effective execution is where vision meets results. It begins with clarity—understanding the goal, planning the approach, and prioritising what matters. Guided by Six Sigma and Kaizen principles, we focus on reducing defects, ensuring process consistency, and pursuing continuous incremental improvement. Efficiency ensures we do things right; effectiveness ensures we do the right things. By combining structured processes with focus, accountability, and attention to detail, we turn plans into outcomes and effort into achievement—delivering every task with precision, purpose, and lasting quality.",
   } as Person,
   ca: {
     name: "Mr. Alok Bishnoi",
     role: "Auditor",
     photo: "/images/boardMember/CA2.jpg",
     message:
-      "Financial discipline, transparency, and accountability are integral to our operations. We are committed to maintaining strong financial practices that support sustainable growth and stakeholder confidence.",
+      "The Company engages an independent external auditing firm to conduct objective financial audits in accordance with professional standards. This commitment to independent verification reflects the Company's dedication to transparency, accountability, and responsible corporate governance.",
   } as Person,
 };
 

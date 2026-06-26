@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MagneticButton from "./MagneticButton";
 
 export type FieldDef = {
@@ -12,6 +12,8 @@ export type FieldDef = {
   textarea?: boolean;
   options?: string[];
   full?: boolean;
+  freeText?: boolean;
+  allowCustom?: boolean;
 };
 
 const DEFAULT_FIELDS: FieldDef[] = [
@@ -21,6 +23,136 @@ const DEFAULT_FIELDS: FieldDef[] = [
   { name: "phone", label: "Phone", type: "tel", required: true },
   { name: "message", label: "Message", textarea: true, full: true },
 ];
+
+function CustomSelect({
+  options,
+  value,
+  onChange,
+  accentRing,
+  accentText,
+  allowCustom = false,
+}: {
+  options: string[];
+  value: string;
+  onChange: (v: string) => void;
+  accentRing: string;
+  accentText: string;
+  allowCustom?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [isCustom, setIsCustom] = useState(false);
+  const [customText, setCustomText] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  useEffect(() => {
+    if (isCustom) inputRef.current?.focus();
+  }, [isCustom]);
+
+  const selected = value || options[0];
+  const containerCls = `flex w-full items-center rounded-xl border border-(--ui-border) bg-(--ui-surface-xs) transition-all ${accentRing}`;
+  const chevron = (
+    <svg viewBox="0 0 16 16" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 6l4 4 4-4" />
+    </svg>
+  );
+
+  return (
+    <div ref={ref} className="relative">
+      {/* trigger — swaps between button and text input */}
+      {isCustom ? (
+        <div className={containerCls}>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="e.g. ₹10–15 Cr"
+            value={customText}
+            onChange={(e) => { setCustomText(e.target.value); onChange(e.target.value); }}
+            className="flex-1 bg-transparent px-4 py-3.5 text-sm text-silver outline-none placeholder-silver/40"
+          />
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            className={`flex shrink-0 items-center justify-center border-l border-(--ui-border) px-3 py-3.5 transition-transform duration-200 ${accentText} ${open ? "rotate-180" : ""}`}
+          >
+            {chevron}
+          </button>
+        </div>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className={`${containerCls} justify-between px-4 py-3.5 text-sm text-silver`}
+        >
+          <span>{selected}</span>
+          <span className={`transition-transform duration-200 ${accentText} ${open ? "rotate-180" : ""}`}>
+            {chevron}
+          </span>
+        </button>
+      )}
+
+      {/* dropdown panel — always in the tree so open state always works */}
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+            className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-xl border border-(--ui-border-md) bg-(--color-panel,#11141d) py-1 shadow-2xl backdrop-blur-xl"
+          >
+            {options.map((o) => {
+              const active = o === selected;
+              return (
+                <li key={o}>
+                  <button
+                    type="button"
+                    onClick={() => { onChange(o); setIsCustom(false); setCustomText(""); setOpen(false); }}
+                    className={`flex w-full items-center justify-between px-4 py-2.5 text-sm transition-colors ${
+                      active
+                        ? `${accentText} bg-white/5`
+                        : "text-silver hover:bg-white/4 hover:text-white"
+                    }`}
+                  >
+                    {o}
+                    {active && !isCustom && (
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 8l4 4 6-7" />
+                      </svg>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+            {allowCustom && (
+              <li>
+                <button
+                  type="button"
+                  onClick={() => { setIsCustom(true); setOpen(false); }}
+                  className={`flex w-full items-center gap-2 border-t border-(--ui-border) px-4 py-2.5 text-sm text-mist transition-colors hover:bg-white/4 hover:text-silver`}
+                >
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 2.5a1.5 1.5 0 0 1 2.12 2.12L5.5 12.24l-2.83.71.71-2.83L11 2.5Z" />
+                  </svg>
+                  Enter custom amount
+                </button>
+              </li>
+            )}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 function Field({
   def,
@@ -44,22 +176,40 @@ function Field({
     : `[border-color:var(--ui-border)] ${accentRing}`;
 
   if (def.options) {
+    if (def.freeText) {
+      const listId = `${def.name}-list`;
+      return (
+        <div className={def.full ? "sm:col-span-2" : ""}>
+          <label className={`mb-1.5 block pl-1 text-[0.7rem] uppercase tracking-wider ${accentText}`}>
+            {def.label}
+          </label>
+          <input
+            list={listId}
+            type="text"
+            placeholder="Type or choose a range…"
+            value={value}
+            onChange={(e) => onChange(def.name, e.target.value)}
+            className={`w-full rounded-xl border border-(--ui-border) bg-(--ui-surface-xs) px-4 py-3.5 text-sm text-silver outline-none transition-all placeholder-silver/40 ${accentRing}`}
+          />
+          <datalist id={listId}>
+            {def.options.map((o) => <option key={o} value={o} />)}
+          </datalist>
+        </div>
+      );
+    }
     return (
       <div className={def.full ? "sm:col-span-2" : ""}>
         <label className={`mb-1.5 block pl-1 text-[0.7rem] uppercase tracking-wider ${accentText}`}>
           {def.label}
         </label>
-        <select
+        <CustomSelect
+          options={def.options}
           value={value}
-          onChange={(e) => onChange(def.name, e.target.value)}
-          className={`w-full rounded-xl border [border-color:var(--ui-border)] [background-color:var(--ui-surface-xs)] px-4 py-3.5 text-sm text-silver outline-none transition-all ${accentRing}`}
-        >
-          {def.options.map((o) => (
-            <option key={o} value={o} className="bg-panel text-silver">
-              {o}
-            </option>
-          ))}
-        </select>
+          onChange={(v) => onChange(def.name, v)}
+          accentRing={accentRing}
+          accentText={accentText}
+          allowCustom={def.allowCustom}
+        />
       </div>
     );
   }
@@ -209,7 +359,7 @@ export default function ContactForm({
             key="ok"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex min-h-[24rem] flex-col items-center justify-center text-center"
+            className="flex min-h-96 flex-col items-center justify-center text-center"
           >
             <motion.svg viewBox="0 0 52 52" className="h-20 w-20" initial="h" animate="s">
               <motion.circle cx="26" cy="26" r="24" fill="none" stroke={strokeColor} strokeWidth="2" variants={{ h: { pathLength: 0 }, s: { pathLength: 1 } }} transition={{ duration: 0.7 }} />
@@ -251,7 +401,7 @@ export default function ContactForm({
               <MagneticButton
                 type="submit"
                 disabled={loading}
-                className={`w-full justify-center ${accent === "lagoon" ? "!bg-gradient-to-r !from-aqua !to-lagoon !text-[#06262f]" : ""}`}
+                className={`w-full justify-center ${accent === "lagoon" ? "bg-linear-to-r! from-aqua! to-lagoon! text-ocean-deep!" : ""}`}
               >
                 {loading ? "Sending…" : submitLabel}
               </MagneticButton>

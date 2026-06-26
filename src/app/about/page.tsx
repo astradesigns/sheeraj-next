@@ -7,6 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import PersonCard from "@/components/ui/PersonCard";
+import LeadershipCard from "@/components/ui/LeadershipCard";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { aboutHighlights, chairmanAddress, company, stats, team } from "@/data/site";
 
@@ -36,7 +37,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="container-x grid items-center gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-2">
           <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border [border-color:var(--ui-border-md)]">
+            <div className="relative h-[55vh] w-full lg:h-auto lg:aspect-4/5 overflow-hidden rounded-3xl border border-(--ui-border-md)">
               <Image src="/images/aboutMain.jpg" alt="Sheeraj engineering" fill sizes="(max-width:1024px) 100vw, 45vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent" />
             </div>
@@ -113,7 +114,7 @@ export default function AboutPage() {
                 {/* message — scrolls internally first, then chains to the page */}
                 <div
                   data-lenis-prevent
-                  className="chairman-scroll max-h-88 overflow-y-auto pr-3 md:max-h-104 md:pr-4"
+                  className="chairman-scroll max-h-112 overflow-y-auto pr-3 md:max-h-160 md:pr-4"
                 >
                   {chairmanAddress.before.map((p, i) => (
                     <p
@@ -147,15 +148,23 @@ export default function AboutPage() {
             </div>
           </Reveal>
 
+          {/* Board of Directors tier */}
+          <div className="my-10 flex items-center gap-4">
+            <div className="h-px flex-1 bg-linear-to-r from-transparent to-gold/20" />
+            <span className="text-[0.68rem] uppercase tracking-[0.2em] text-gold/40">Board of Directors</span>
+            <div className="h-px flex-1 bg-linear-to-r from-gold/20 to-transparent" />
+          </div>
+
           {/* managing director — Ankit Pannu (same card + tilt animation as directors) */}
-          <Reveal className="mt-6">
+          <Reveal>
             <PersonCard
               person={{
                 name: "Mr. Ankit Pannu",
                 role: "Managing Director",
+                qualification: "M.Tech",
                 photo: "/images/boardMember/ankitSir.png",
                 message:
-                  "At SHEERAJ Projects, our commitment is to deliver excellence through quality construction, innovation, and timely project execution. We strive to build lasting value for our clients while contributing to the growth of modern infrastructure.",
+                  "At Sheeraj Projects, we believe growth is the heartbeat of progress—a bold, unending journey rather than a finish line. Every challenge becomes our opportunity to innovate, to push boundaries, and to create value that endures. We don't simply build bigger; we build better, fueled by relentless innovation, exceptional talent, and unwavering purpose. To us, growth is a responsibility we carry with pride—a promise to evolve, to pursue excellence without compromise, and to rise to every changing need. Guided by integrity and an unshakable vision for the future, we are creating opportunities, strengthening communities, and building a legacy that will inspire generations to come.",
               }}
               featured
               size="md"
@@ -169,14 +178,36 @@ export default function AboutPage() {
             </Reveal>
           ))}
 
-          {/* COO — shorter than director cards */}
-          <Reveal className="mt-6">
-            <PersonCard person={team.coo} featured size="sm" reverse />
+          {/* Operations & Governance tier */}
+          <div className="my-10 flex items-center gap-4">
+            <div className="h-px flex-1 bg-linear-to-r from-transparent to-gold/20" />
+            <span className="text-[0.68rem] uppercase tracking-[0.2em] text-gold/40">Operations &amp; Governance</span>
+            <div className="h-px flex-1 bg-linear-to-r from-gold/20 to-transparent" />
+          </div>
+
+          {/* COO — same styling as the directors, shorter card */}
+          <Reveal>
+            <LeadershipCard
+              person={team.coo}
+              pad="p-5 md:p-7"
+              nameClass="text-xl md:text-2xl"
+              msgClass="text-sm"
+              portraitH="md:h-60"
+              minH="md:min-h-[460px] xl:min-h-[360px]"
+            />
           </Reveal>
 
-          {/* Auditor — shortest card, below COO */}
+          {/* Auditor — same styling, shorter still than the COO card */}
           <Reveal className="mt-6">
-            <PersonCard person={team.ca} featured size="xs" />
+            <LeadershipCard
+              person={team.ca}
+              reverse
+              pad="p-4 md:p-6"
+              nameClass="text-lg md:text-xl"
+              msgClass="text-sm"
+              portraitH="md:h-48"
+              minH="md:min-h-[360px] xl:min-h-[280px]"
+            />
           </Reveal>
         </div>
       </section>

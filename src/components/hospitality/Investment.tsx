@@ -16,7 +16,7 @@ const INVESTOR_FIELDS: FieldDef[] = [
   { name: "email", label: "Email", type: "email", required: true },
   { name: "phone", label: "Phone", type: "tel", required: true },
   { name: "interest", label: "Area of interest", options: ["Equity participation", "Branded residence", "Strategic partnership", "General enquiry"] },
-  { name: "ticket", label: "Indicative ticket size", options: ["Prefer not to say", "₹1–5 Cr", "₹5–25 Cr", "₹25 Cr+"] },
+  { name: "ticket", label: "Indicative ticket size", options: ["Prefer not to say", "₹1–5 Cr", "₹5–25 Cr", "₹25 Cr+"], allowCustom: true },
   { name: "message", label: "Message", textarea: true, full: true },
 ];
 
