@@ -3,7 +3,6 @@ import { Inter, Sora, Fraunces, Cinzel } from "next/font/google";
 import "./globals.css";
 
 import SmoothScroll from "@/components/providers/SmoothScroll";
-import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/layout/Preloader";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -62,8 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="grain min-h-dvh antialiased">
         <Preloader />
-        <CustomCursor />
-        <SmoothScroll>
+<SmoothScroll>
           <Navbar />
           <main>{children}</main>
           <Footer />
