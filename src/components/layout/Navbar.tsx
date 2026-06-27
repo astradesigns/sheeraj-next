@@ -124,6 +124,12 @@ export default function Navbar() {
         }`}
         style={{ paddingTop: `calc(${scrolled ? "0.75rem" : "1.25rem"} + env(safe-area-inset-top, 0px))` }}
       >
+        {/* Fills the Dynamic Island / status-bar notch area with the panel colour so it never shows through to the hero. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 bg-panel"
+          style={{ height: "env(safe-area-inset-top, 0px)" }}
+        />
         <nav className="container-x flex items-center justify-between">
           <Link
             href="/"
