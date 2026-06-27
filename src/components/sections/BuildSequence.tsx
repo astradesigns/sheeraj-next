@@ -51,7 +51,7 @@ export default function BuildSequence() {
       if (reduce) {
         gsap.set([".bs-pylon", ".bs-deck"], { scaleX: 1, scaleY: 1, opacity: 1 });
         gsap.set([".bs-dash"], { opacity: 1, scaleX: 1 });
-        gsap.set([".bs-glow", ".bs-car", ".bs-ambient"], { opacity: 1 });
+        gsap.set([".bs-glow", ".bs-ambient"], { opacity: 1 });
         gsap.set(".bs-lamp", { scaleY: 1, opacity: 1 });
         gsap.set(".bs-light", { opacity: 1, scale: 1 });
         gsap.set(".bs-beamfill", { scaleY: 1 });
@@ -63,20 +63,11 @@ export default function BuildSequence() {
       gsap.set(".bs-pylon", { scaleY: 0 });
       gsap.set(".bs-deck", { scaleX: 0 });
       gsap.set(".bs-dash", { opacity: 0, scaleX: 0 });
-      gsap.set([".bs-glow", ".bs-car", ".bs-ambient"], { opacity: 0 });
+      gsap.set([".bs-glow", ".bs-ambient"], { opacity: 0 });
       gsap.set(".bs-lamp", { scaleY: 0, opacity: 0 });
       gsap.set(".bs-light", { opacity: 0, scale: 0 });
 
       // ── ambient life (independent of scroll) ──
-      // car drives from the start of the bridge to the end, then loops —
-      // paused until the bridge is built so it always begins at the start
-      const carTween = gsap.fromTo(
-        ".bs-car",
-        { x: 58 },
-        { x: 410, duration: 6, ease: "none", repeat: -1, paused: true }
-      );
-      let carRunning = false;
-
       gsap.fromTo(
         ".bs-ember",
         { y: 0, opacity: 0.85 },
@@ -90,16 +81,6 @@ export default function BuildSequence() {
           start: "top top",
           end: "bottom bottom",
           scrub: 0.6,
-          onUpdate: (self) => {
-            const built = self.progress >= 0.82;
-            if (built && !carRunning) {
-              carRunning = true;
-              carTween.restart(); // begin the drive from the bridge start
-            } else if (!built && carRunning) {
-              carRunning = false;
-              carTween.pause(0); // reset back to the start
-            }
-          },
         },
       });
 
@@ -139,8 +120,6 @@ export default function BuildSequence() {
         { opacity: 1, scale: 1, stagger: 0.08, duration: 0.6, ease: "back.out(2.6)" },
         3.25
       );
-      tl.fromTo(".bs-car", { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 3.4);
-
       const stages = q(".bs-stage");
       stages.forEach((el: Element, i: number) => {
         tl.fromTo(el, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, i * 1);
@@ -204,10 +183,6 @@ export default function BuildSequence() {
                     <stop offset="0" stopColor="#fff" stopOpacity="0" />
                     <stop offset="0.5" stopColor="#fff" stopOpacity="0.28" />
                     <stop offset="1" stopColor="#fff" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="bs-metal" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stopColor="#4a5160" />
-                    <stop offset="1" stopColor="#161a22" />
                   </linearGradient>
                   <radialGradient id="bs-orb">
                     <stop offset="0" stopColor="#fff6df" />
@@ -319,26 +294,6 @@ export default function BuildSequence() {
                     </g>
                   );
                 })}
-
-                {/* ── Car crossing the bridge (ambient loop, revealed stage 4) ── */}
-                <g className="bs-car">
-                  {/* headlight beam */}
-                  <polygon points="84,162 110,156 110,168" fill="url(#bs-warm)" opacity="0.7" />
-                  {/* body */}
-                  <path d="M42 166 q0-9 9-10 l8-6 q3-2 8-2 l10 1 q5 1 8 5 l5 5 q4 1 4 6 l0 2 q0 3-4 3 l-48 0 q-8 0-8-7Z" fill="url(#bs-metal)" />
-                  {/* glass */}
-                  <path d="M55 152 l6-4 q2-1 6-1 l8 1 q3 0 5 3 l3 4 Z" fill="#9fc7d6" opacity="0.7" />
-                  {/* belt highlight */}
-                  <rect x="44" y="159" width="46" height="1.4" rx="0.7" fill="#fff" opacity="0.25" />
-                  {/* wheels */}
-                  <circle cx="54" cy="168" r="4.4" fill="#15171d" />
-                  <circle cx="54" cy="168" r="1.7" fill="#5a5e68" />
-                  <circle cx="78" cy="168" r="4.4" fill="#15171d" />
-                  <circle cx="78" cy="168" r="1.7" fill="#5a5e68" />
-                  {/* headlight + taillight */}
-                  <circle cx="89" cy="162" r="2" fill="#fff3d6" filter="url(#bs-bloom)" />
-                  <circle cx="43" cy="161" r="1.7" fill="#ff5a4d" filter="url(#bs-bloom)" />
-                </g>
 
                 {/* ── Drifting embers above the lamps (ambient, revealed stage 4) ── */}
                 <g className="bs-ambient">

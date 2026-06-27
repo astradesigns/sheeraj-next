@@ -19,14 +19,14 @@ const SIZES = {
   },
   md: {
     pad: "p-5 md:p-8",
-    colsDefault: "md:grid-cols-[1.64fr_0.36fr]",
-    colsReverse: "md:grid-cols-[0.36fr_1.64fr]",
+    colsDefault: "md:grid-cols-[3fr_2fr] lg:grid-cols-[1.64fr_0.5fr]",
+    colsReverse: "md:grid-cols-[2fr_3fr] lg:grid-cols-[0.5fr_1.64fr]",
     portrait: "aspect-[3/4]",
     name: "text-2xl md:text-3xl",
     msg: "text-base md:text-lg",
     msgMt: "mt-5",
     divider: "mt-6 w-16",
-    cardFlex: "md:flex md:flex-col md:min-h-[580px] xl:min-h-[440px]",
+    cardFlex: "md:flex md:flex-col md:min-h-[420px] lg:min-h-[560px] xl:min-h-[440px]",
     gridGrow: "md:grow",
   },
   sm: {

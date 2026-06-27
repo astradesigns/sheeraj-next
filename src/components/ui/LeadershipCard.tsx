@@ -38,14 +38,19 @@ export default function LeadershipCard({
     <TiltCard max={4} className="rounded-[1.75rem]">
       <div className={`glass overflow-hidden rounded-[1.75rem] ${pad} md:flex md:flex-col ${minH}`}>
         <div
-          className={`grid gap-6 md:gap-10 md:grow ${
-            reverse ? "md:grid-cols-[0.36fr_1.64fr]" : "md:grid-cols-[1.64fr_0.36fr]"
+          className={`grid gap-6 md:gap-8 md:grow ${
+            reverse
+              ? "md:grid-cols-[2fr_3fr] lg:grid-cols-[0.5fr_1.64fr]"
+              : "md:grid-cols-[3fr_2fr] lg:grid-cols-[1.64fr_0.5fr]"
           }`}
         >
           {/* message */}
           <div className={`order-2 flex flex-col justify-center ${reverse ? "md:order-2" : "md:order-1"}`}>
             <span className="eyebrow">{person.role}</span>
             <h3 className={`mt-3 font-serif tracking-tight ${nameClass}`}>{person.name}</h3>
+            {person.company && (
+              <p className="mt-1 font-serif text-sm italic" style={{ color: "var(--accent-gold)" }}>{person.company}</p>
+            )}
             {person.qualification && (
               <div className="mt-2 flex flex-wrap gap-2">
                 {person.qualification.split(",").map((q) => (

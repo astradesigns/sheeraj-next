@@ -594,6 +594,7 @@ export type Person = {
   photo: string;
   message: string;
   qualification?: string;
+  company?: string;
 };
 
 export const team = {
@@ -626,6 +627,7 @@ export const team = {
   ca: {
     name: "Mr. Alok Bishnoi",
     role: "Auditor",
+    company: "Goddara & Company",
     photo: "/images/boardMember/CA2.jpg",
     message:
       "He is the independent auditor of the Company, appointed to provide objective assurance on our financial statements and compliance with applicable laws and accounting standards. Through professional diligence, integrity, and a commitment to the highest auditing standards, he helps strengthen transparency, accountability, and stakeholder confidence in our operations.",
