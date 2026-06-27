@@ -47,14 +47,23 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t [border-color:var(--ui-border)] bg-ink pt-20">
-      {/* SHEERAJ watermark — same font as navbar brand */}
+      {/* SHEERAJ watermark */}
       <svg
         aria-hidden
         preserveAspectRatio="none"
         viewBox="0 0 1000 100"
         className="pointer-events-none select-none absolute inset-0 w-full h-full hidden md:block"
-        style={{ fill: "var(--watermark)" }}
       >
+        <defs>
+          <linearGradient id="wm-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stopColor="white" stopOpacity="0"   />
+            <stop offset="50%"  stopColor="white" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="white" stopOpacity="1"   />
+          </linearGradient>
+          <mask id="wm-mask">
+            <rect x="0" y="0" width="1000" height="100" fill="url(#wm-fade)" />
+          </mask>
+        </defs>
         <text
           className="font-brand font-semibold"
           x="500"
@@ -63,6 +72,8 @@ export default function Footer() {
           fontSize={100}
           textLength={1000}
           lengthAdjust="spacingAndGlyphs"
+          fill="rgba(212,175,55,0.18)"
+          mask="url(#wm-mask)"
         >
           SHEERAJ
         </text>

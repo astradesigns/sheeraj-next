@@ -216,10 +216,6 @@ export default function ResortBuild() {
                   <path className="rb-island-green" d="M118 232 Q170 208 234 207 Q300 209 332 228 Q290 240 230 242 Q160 240 118 232Z" fill="#3a7a4a" opacity="0.6" style={ob} />
                   <path d="M48 252 Q112 206 230 200 Q350 206 402 234" stroke="#f1e2b4" strokeWidth="1.6" fill="none" opacity="0.5" />
 
-                  {/* infinity pool */}
-                  <rect x="70" y="214" width="78" height="24" rx="3" fill="#073340" />
-                  <rect className="rb-pool-water" x="72" y="216" width="74" height="20" rx="2" fill="#2bb6c4" style={ob} />
-                  <path d="M74 220 q18 3 36 0 t36 0" stroke="#bdeef0" strokeWidth="1" fill="none" opacity="0.5" />
                 </g>
 
                 {/* villa foundation pads */}

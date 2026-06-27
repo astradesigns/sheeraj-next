@@ -139,7 +139,7 @@ export default function Navbar() {
               >
                 {company.name}
               </span>
-              <span className="mt-1 font-serif text-[0.72rem] italic lowercase tracking-wide text-gold">
+              <span className="-mt-1.5 font-serif text-[0.72rem] italic lowercase tracking-wide text-gold">
                 {company.motto}
               </span>
             </span>

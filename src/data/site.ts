@@ -510,8 +510,8 @@ export const hospitalityPage = {
     eyebrow: "Andaman Projects",
     title: "Our projects in Andaman & Nicobar Islands.",
     phases: [
-      { year: "₹175 CR", title: "Ultra-Luxury Wellness Retreat, Shaheed Dweep Island", body: "Development of 5-Star Eco-Tourism Resort at Shaheed Dweep Island, ANI on PPP basis. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 75 Yrs (Incl. Construction Period)." },
-      { year: "₹160 CR", title: "Megapode Conventional Hotel, Sri Vijaya Puram", body: "Design, Build, Finance, Operate and Transfer (DBFOT) of Megapode Resort at Sri Vijaya Puram. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 50 Yrs (Incl. Construction Period)." },
+      { year: "₹250.4 CR", title: "Ultra-Luxury Wellness Retreat, Shaheed Dweep Island", body: "Development of 5-Star Eco-Tourism Resort at Shaheed Dweep Island, ANI on PPP basis. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 75 Yrs (Incl. Construction Period)." },
+      { year: "₹270.9 CR", title: "Megapode Conventional Hotel, Sri Vijaya Puram", body: "Design, Build, Finance, Operate and Transfer (DBFOT) of Megapode Resort at Sri Vijaya Puram. Awarded by ANIIDCO. Construction Period: 3 Yrs | Concession Period: 50 Yrs (Incl. Construction Period)." },
     ],
   },
   gallery: [
@@ -529,7 +529,7 @@ export const hospitalityPage = {
     title: "Own a stake in the islands' future.",
     body: "Two government-awarded projects in one of India's most coveted island destinations — backed by SHEERAJ's two-decade EPC track record. Both developments operate under long-term concession frameworks with ANIIDCO, giving investors a rare combination of sovereign backing, operational upside, and enduring asset value.",
     stats: [
-      { value: 700, suffix: " CR", label: "Combined project value" },
+      { value: 521.3, suffix: " CR", label: "Combined project value" },
       { value: 75, suffix: " Yrs", label: "Concession period" },
       { value: 2, suffix: "", label: "Government-awarded projects" },
       { value: 2029, suffix: " Yrs", label: "Delivery time" },
@@ -620,6 +620,7 @@ export const team = {
   coo: {
     name: "Mr. Dilbagh Singh Dhandha",
     role: "Chief Operating Officer",
+    qualification: "BE Civil",
     photo: "/images/boardMember/dhandhaSir.jpg",
     message:
       "Efficient and effective execution is where vision meets results. It begins with clarity—understanding the goal, planning the approach, and prioritising what matters. Guided by Six Sigma and Kaizen principles, we focus on reducing defects, ensuring process consistency, and pursuing continuous incremental improvement. Efficiency ensures we do things right; effectiveness ensures we do the right things. By combining structured processes with focus, accountability, and attention to detail, we turn plans into outcomes and effort into achievement—delivering every task with precision, purpose, and lasting quality.",
@@ -972,7 +973,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     officialName:
       "Development of 5-Star Eco-Tourism Resort at Shaheed Dweep Island, ANI on PPP basis",
     client: "ANIIDCO (Andaman & Nicobar Islands Integrated Development Corporation)",
-    value: "₹175 Cr",
+    value: "₹250.4 Cr",
     overview:
       "Awarded by ANIIDCO on a Public-Private Partnership basis, this project involves the development of a 5-Star Eco-Tourism Resort at Shaheed Dweep Island, Andaman & Nicobar Islands. The resort will be designed, built, financed, operated and maintained by Sheeraj under a 75-year concession (inclusive of the 3-year construction period), setting a new benchmark for luxury eco-tourism in India's island territories.",
     scope: [
@@ -990,7 +991,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
     facts: [
       { label: "Client", value: "ANIIDCO" },
-      { label: "Project Value", value: "₹175 Cr" },
+      { label: "Project Value", value: "₹250.4 Cr" },
       { label: "Construction Period", value: "3 Years" },
       { label: "Concession Period", value: "75 Yrs (Incl. Construction Period)" },
     ],
@@ -1006,7 +1007,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     officialName:
       "Design, Build, Finance, Operate and Transfer (DBFOT) of Megapode Resort at Sri Vijaya Puram through ANIIDCO",
     client: "ANIIDCO (Andaman & Nicobar Islands Integrated Development Corporation)",
-    value: "₹160 Cr",
+    value: "₹270.9 Cr",
     overview:
       "Awarded by ANIIDCO under the DBFOT model, this project involves the design, construction, financing, operation and transfer of the Megapode Resort at Sri Vijaya Puram, Andaman & Nicobar Islands. Sheeraj holds a 50-year concession (inclusive of the 3-year construction period), delivering a premium resort that combines modern hospitality with the natural character of the island setting.",
     scope: [
@@ -1023,7 +1024,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
     facts: [
       { label: "Client", value: "ANIIDCO" },
-      { label: "Project Value", value: "₹160 Cr" },
+      { label: "Project Value", value: "₹270.9 Cr" },
       { label: "Construction Period", value: "3 Years" },
       { label: "Concession Period", value: "50 Yrs (Incl. Construction Period)" },
     ],

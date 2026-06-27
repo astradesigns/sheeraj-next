@@ -16,12 +16,9 @@ export default function About() {
           <SectionHeading
             eyebrow="Who We Are"
             title={
-              <>
-                Two identities.
-                <br />
-                <span className="text-gold-gradient italic">One standard</span> of
-                building.
-              </>
+            <>
+            Managed Discipline.<span className="text-gold-gradient italic">One Standard.</span> Infinite Possibilities.
+            </>
             }
             intro="For over a decade, we have shaped the infrastructure that connects communities across mainland India and its islands. Extending this legacy of expertise and trust, we craft exceptional hospitality destinations where thoughtful design, comfort, and unforgettable experiences come together."
           />

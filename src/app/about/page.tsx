@@ -24,7 +24,7 @@ export default function AboutPage() {
         breadcrumb={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }]}
         title={
           <>
-            Two identities. <span className="text-gold-gradient italic">One standard</span> of building.
+            Managed Discipline.<span className="text-gold-gradient italic">One Standard.</span> Infinite Possibilities.
           </>
         }
         subtitle={`Since ${company.established}, we have engineered the roads, canals and bridges that connect India — and today we bring that same precision to crafting destinations that inspire it.`}
