@@ -103,6 +103,8 @@
     --grad-trop-1:        #0c4b59;
     --grad-trop-2:        #1a6f5e;
     --grad-trop-3:        #b8502f;
+
+    --watermark:          rgba(0, 0, 0, 0.04);
   }
 
   /* ---- Dark theme overrides ---- */
@@ -157,6 +159,8 @@
     --grad-trop-1:        #5fd3c4;
     --grad-trop-2:        #ead9b0;
     --grad-trop-3:        #ff7e5f;
+
+    --watermark:          rgba(255, 255, 255, 0.04);
   }
 
   html.dark * {

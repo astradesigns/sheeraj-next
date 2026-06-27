@@ -628,7 +628,7 @@ export const team = {
     role: "Auditor",
     photo: "/images/boardMember/CA2.jpg",
     message:
-      "The Company engages an independent external auditing firm to conduct objective financial audits in accordance with professional standards. This commitment to independent verification reflects the Company's dedication to transparency, accountability, and responsible corporate governance.",
+      "He is the independent auditor of the Company, appointed to provide objective assurance on our financial statements and compliance with applicable laws and accounting standards. Through professional diligence, integrity, and a commitment to the highest auditing standards, he helps strengthen transparency, accountability, and stakeholder confidence in our operations.",
   } as Person,
 };
 

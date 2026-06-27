@@ -26,7 +26,7 @@ export default function HospHero() {
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
       >
-        <source src="/videos/hospitality_1.mp4" type="video/mp4" />
+        <source src="/videos/hospitality_2.mp4" type="video/mp4" />
       </video>
 
       {/* black dim overlay */}

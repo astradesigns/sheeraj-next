@@ -71,7 +71,7 @@ export default function Navbar() {
   const renderLink = (item: NavItem, mobile = false) => {
     const active = isActive(item.to);
     const base = mobile
-      ? `block py-3 text-2xl font-serif transition-colors ${
+      ? `block py-2 text-xl font-serif transition-colors ${
           active ? "text-gold" : "text-silver hover:text-gold"
         }`
       : `relative text-sm transition-colors ${
@@ -252,7 +252,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex flex-col justify-center bg-base/95 px-8 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-base/95 px-8 pt-20 pb-6 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {nav.flatMap((item) =>

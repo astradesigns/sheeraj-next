@@ -47,6 +47,26 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t [border-color:var(--ui-border)] bg-ink pt-20">
+      {/* SHEERAJ watermark — same font as navbar brand */}
+      <svg
+        aria-hidden
+        preserveAspectRatio="none"
+        viewBox="0 0 1000 100"
+        className="pointer-events-none select-none absolute inset-0 w-full h-full hidden md:block"
+        style={{ fill: "var(--watermark)" }}
+      >
+        <text
+          className="font-brand font-semibold"
+          x="500"
+          y="80"
+          textAnchor="middle"
+          fontSize={100}
+          textLength={1000}
+          lengthAdjust="spacingAndGlyphs"
+        >
+          SHEERAJ
+        </text>
+      </svg>
       <div className="container-x relative">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
           {/* brand + socials */}
