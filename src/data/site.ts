@@ -7,11 +7,11 @@
 // Static image imports — Next hashes the file CONTENTS, so replacing the file
 // busts the cache automatically (no stale optimized copy). Prefer this over a
 // bare "/images/..." string for any image you expect to swap out.
-import andaman1 from "../../public/images/1.jpeg";
-import andaman2 from "../../public/images/2.jpeg";
-import andaman3 from "../../public/images/3.jpeg";
+import andaman1 from "../../public/images/T11.png";
+import andaman2 from "../../public/images/T2.png";
+import andaman3 from "../../public/images/T3.png";
 import andaman5 from "../../public/images/andaman/5.png";
-import andamanVision from "../../public/images/andaman/vision.jpg";
+import andamanVision from "../../public/images/andaman/vision1.png";
 
 export const company = {
   name: "SHEERAJ Projects",
