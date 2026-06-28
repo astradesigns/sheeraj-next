@@ -145,35 +145,25 @@ function RentalFormInner() {
     setApiError(null);
 
     try {
-      // The backend contact endpoint verifies the token itself, so we use its
-      // expected action and let it do the single (one-time) verification.
+      // The backend verifies the token itself, so we use its expected action
+      // and let it do the single (one-time) verification.
       const recaptchaToken = await executeRecaptcha("contact_form");
 
-      // No dedicated machinery endpoint exists on the backend, so we send the
-      // enquiry through the shared contact form and fold the plant details into
-      // the message — that way the email + Jira ticket carry full context.
-      const details = [
-        `Machinery: ${form.machinery}`,
-        form.model && `Model / Spec: ${form.model}`,
-        form.quantity && `Quantity: ${form.quantity}`,
-      ].filter(Boolean);
-      const message = [
-        "Plant & machinery rental enquiry",
-        ...details,
-        form.message && `\n${form.message}`,
-      ]
-        .filter(Boolean)
-        .join("\n");
-
-      const res = await fetch(`${API_BASE}/contact-form-sheeraj-projects`, {
+      // Post to the dedicated machinery endpoint so the enquiry uses the
+      // machinery email template + Jira labels and is stored as its own record
+      // (the contact endpoint enforces a unique email, blocking repeat enquiries).
+      const res = await fetch(`${API_BASE}/machinery-inquiry`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          machinery: form.machinery,
+          model: form.model || undefined,
+          quantity: form.quantity || undefined,
           name: form.name,
           email: form.email,
           phone: form.phone,
           company: form.company || undefined,
-          message,
+          message: form.message || undefined,
           recaptchaToken,
         }),
       });
