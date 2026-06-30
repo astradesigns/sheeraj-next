@@ -12,6 +12,7 @@ import { scrollToTarget } from "@/components/providers/SmoothScroll";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState<string | null>(null);
 
@@ -26,9 +27,31 @@ export default function Navbar() {
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
 
+  // Headroom auto-hide: reveal the header instantly on scroll-up, hide it on
+  // scroll-down, and always show it near the top. A small delta avoids jitter.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
+    let lastY = window.scrollY;
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (y < 80) {
+        setHidden(false);
+      } else if (y > lastY + 4) {
+        setHidden(true);
+      } else if (y < lastY - 4) {
+        setHidden(false);
+      }
+      lastY = y;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -119,16 +142,17 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`site-header absolute inset-x-0 top-0 z-50 transition-all duration-500 lg:fixed ${
+        className={`site-header fixed inset-x-0 top-0 z-50 ${hidden && !open ? "is-hidden" : ""} ${
           scrolled ? "glass-strong pb-3 lg:shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]" : "pb-5"
         }`}
         style={{ paddingTop: `calc(${scrolled ? "0.75rem" : "1.25rem"} + env(safe-area-inset-top, 0px))` }}
       >
-        {/* On mobile the header is position:absolute and scrolls away with the page
-            (no fixed element → no iOS-Safari scroll-bleed); on lg+ it is fixed and
-            gains the frosted glass panel when scrolled (see `.glass-strong`). The
-            Dynamic Island / status-bar strip is painted by the OS via the theme-color
-            meta (panel colour) — viewport-fit=cover is intentionally not set. */}
+        {/* Auto-hide "headroom" header: slides up on scroll-down, reveals on scroll-up
+            (the `is-hidden` class + transform live in globals.css). The slide is a
+            transform, which on mobile also keeps the fixed header on its own GPU layer
+            and so prevents the iOS-Safari scroll-bleed; the bar is solid on mobile,
+            frosted glass on lg+. The Dynamic Island / status-bar strip is painted by
+            the OS via the theme-color meta — viewport-fit=cover is intentionally unset. */}
         <nav className="container-x flex items-center justify-between">
           <Link
             href="/"

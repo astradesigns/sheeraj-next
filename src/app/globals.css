@@ -283,32 +283,61 @@
     border: 1px solid color-mix(in oklab, #ffffff 9%, transparent);
   }
 
-  /* Scrolled navbar — frosted glass on DESKTOP only.
-     On mobile the header is position:absolute (see Navbar.tsx) and SCROLLS AWAY
-     with the page like the reference site (websiteSCW), so it needs no glass bar.
-     Keeping it transparent on mobile means there is no solid sliver flashing as it
-     leaves, and — crucially — there is no position:fixed element on phones at all,
-     which fully eliminates the iOS-Safari fixed-element scroll-bleed (content
-     painting over the bar's top edge during momentum scroll). The Dynamic Island /
-     status-bar strip is handled by the OS, tinted via the theme-color meta (panel
-     colour) since viewport-fit=cover is removed.
-     Desktop keeps the header position:fixed, so it gets the frosted glass panel +
-     hairline + blur when scrolled. */
+  /* Scrolled navbar — solid on mobile, frosted glass on desktop.
+     The header is fixed and auto-hides (see the headroom rules below + Navbar.tsx):
+     it slides up out of view on scroll-down and back in on scroll-up. When shown
+     while scrolled it overlays page content, so on mobile it must be a SOLID opaque
+     bar (page content must not show through). Desktop keeps the frosted glass. */
   .glass-strong {
-    background: transparent;
+    background: var(--color-panel);
+    border-bottom: 1px solid color-mix(in oklab, #000000 16%, transparent);
+  }
+  html.dark .glass-strong {
+    background: var(--color-panel);
+    border-bottom: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
   }
   @media (min-width: 1024px) {
     .glass-strong {
       background: color-mix(in oklab, var(--color-panel) 88%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, #000000 16%, transparent);
       backdrop-filter: blur(22px) saturate(190%) brightness(0.94);
       -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(0.94);
     }
     html.dark .glass-strong {
       background: color-mix(in oklab, var(--color-panel) 86%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
       backdrop-filter: blur(22px) saturate(210%) brightness(0.78);
       -webkit-backdrop-filter: blur(22px) saturate(210%) brightness(0.78);
+    }
+  }
+
+  /* Headroom auto-hide. The header slides up on scroll-down and back down on
+     scroll-up (the `is-hidden` class is toggled in Navbar.tsx). The slide uses a
+     transform so it is GPU-composited.
+     MOBILE: a persistent 3D transform also pins the header to its own compositing
+     layer — this is what prevents the iOS-Safari fixed-element scroll-bleed (the
+     header is solid here with no backdrop-filter, so there is no transform/blur
+     clash). DESKTOP: the header is frosted glass and WebKit can drop backdrop-filter
+     on a transformed element, so we apply NO transform while shown and only
+     translate it while hidden (off-screen, where the blur is moot). */
+  .site-header {
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 0.45s ease,
+      padding 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+  @media (max-width: 1023.98px) {
+    .site-header {
+      transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+    }
+    .site-header.is-hidden {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  @media (min-width: 1024px) {
+    .site-header.is-hidden {
+      transform: translateY(-100%);
     }
   }
 
